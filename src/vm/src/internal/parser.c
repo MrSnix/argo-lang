@@ -218,7 +218,7 @@ void vm__dec_cll(VM *vm)
   Operation *op = vm__op_create(CLL, "CLL", vm->ip, CLL_ARGS);
 
   op->args[0].name = "ID";
-  op->args[0].value = vm__stack_top(vm->stack);
+  op->args[0].value = vm__fetch_next(vm);
   op->args[0].addr = vm__stack_size(vm->stack);
 
   vm->op = op;
