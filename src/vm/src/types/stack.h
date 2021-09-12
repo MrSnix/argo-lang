@@ -11,7 +11,7 @@ typedef struct
   int32_t *data;
   int32_t offset;
   int32_t counter;
-  int32_t current;
+  int32_t size;
   int32_t max;
 } Stack;
 
