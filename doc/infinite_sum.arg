@@ -1,0 +1,13 @@
+# The following .arg equals to this code:
+#
+# int res = 1;
+# while(true) {
+#   res = res + 1;
+# }
+#
+
+PSH, 1,
+PSH, 1, 
+ADD,
+JMP, 2,
+HLT

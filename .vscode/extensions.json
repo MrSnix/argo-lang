@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        "ms-vscode.cpptools",
+        "christian-kohler.path-intellisense",
+        "joaompinto.vscode-graphviz",
+        "ms-vscode.hexeditor",
+        "ms-vscode.cmake-tools",
+        "twxs.cmake"
+    ]
+}

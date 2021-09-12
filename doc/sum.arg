@@ -1,0 +1,9 @@
+# The following .arg equals to this code:
+#
+# int res = 5 + 4;
+#
+
+PSH, 5,
+PSH, 4, 
+ADD,
+HLT

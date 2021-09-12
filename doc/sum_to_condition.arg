@@ -1,0 +1,16 @@
+# The following .arg equals to this code:
+#
+# int res = 1;
+# while(res < 100){
+#   res = res + 1;
+# }
+#
+
+PSH, 1,
+PSH, 1,
+ADD,
+PSH, 100, 
+CMP,
+POP,
+JML, 2,
+HLT

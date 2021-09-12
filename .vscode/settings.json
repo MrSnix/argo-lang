@@ -1,0 +1,10 @@
+{
+    "cmake.configureOnOpen": true,
+    "files.associations": {
+        "*.c": "c",
+        "*.h": "c",
+    },
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "cmake.sourceDirectory": "${workspaceFolder}/src/vm"
+}
