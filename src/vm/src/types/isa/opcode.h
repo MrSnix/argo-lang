@@ -19,20 +19,20 @@ typedef enum {
 } OpCodeArgs;
 
 typedef enum {
-  HLT = 0,
-  PSH = 1,
-  POP = 2,
-  ADD = 3,
-  SUB = 4,
-  MUL = 5,
-  DIV = 6,
-  JMP = 7,
-  JME = 8,
-  JMN = 9,
-  JMG = 10,
-  JML = 11,
-  CMP = 12,
-  NOP = 13
+  HLT,
+  NOP,
+  PSH,
+  POP,
+  ADD,
+  SUB,
+  MUL,
+  DIV,
+  JMP,
+  JME,
+  JMN,
+  JMG,
+  JML,
+  CMP
 } OpCode;
 
 #endif
