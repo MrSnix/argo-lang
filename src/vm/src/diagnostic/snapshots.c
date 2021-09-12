@@ -53,11 +53,11 @@ void vm__snaps_memory(VM *vm)
   printf("| %-14s %-12s %-10d |\n", "(int32_t)", "current", vm->stack->current);
   printf("| %-14s %-12s %-10d |\n", "(int32_t)", "max", vm->stack->max);
   printf("+----------------------------------------+\n");
+  printf("| <DATA>%*s|\n", 33, "");
+  printf("+----------------------------------------+\n");
 
   if (vm->stack->counter)
   {
-    printf("| <DATA>%*s|\n", 33, "");
-    printf("+----------------------------------------+\n");
     printf("| %-14s %-12s %-10s |\n", "TYPE", "ADDR", "VALUE");
     printf("+----------------------------------------+\n");
 
@@ -68,6 +68,7 @@ void vm__snaps_memory(VM *vm)
   }
   else
   {
+
     printf("| [EMPTY]%*s|\n", 32, "");
   }
 
