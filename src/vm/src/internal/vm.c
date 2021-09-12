@@ -16,6 +16,7 @@ static VM *vm__init(const int32_t *bytecode)
   vm->running = false;
   vm->bytecode = bytecode;
   vm->ip = 0;
+  vm->cmp = EQUALS;
   vm->stack = vm__stack_create(STACK_DEFAULT_SIZE, STACK_1MB_SIZE);
   vm->op = NULL;
   vm->opts = NULL;

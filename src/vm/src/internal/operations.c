@@ -61,7 +61,7 @@ bool vm__exc_jmp(VM *vm)
 
 bool vm__exc_jme(VM *vm)
 {
-  bool cmp = vm->cm == EQUALS;
+  bool cmp = vm->cmp == EQUALS;
 
   if (cmp)
   {
@@ -73,7 +73,7 @@ bool vm__exc_jme(VM *vm)
 
 bool vm__exc_jmn(VM *vm)
 {
-  bool cmp = vm->cm != EQUALS;
+  bool cmp = vm->cmp != EQUALS;
 
   if (cmp)
   {
@@ -85,7 +85,7 @@ bool vm__exc_jmn(VM *vm)
 
 bool vm__exc_jmg(VM *vm)
 {
-  bool cmp = vm->cm == GREATER;
+  bool cmp = vm->cmp == GREATER;
 
   if (cmp)
   {
@@ -97,7 +97,7 @@ bool vm__exc_jmg(VM *vm)
 
 bool vm__exc_jml(VM *vm)
 {
-  bool cmp = vm->cm == LESSER;
+  bool cmp = vm->cmp == LESSER;
 
   if (cmp)
   {
@@ -111,14 +111,14 @@ void vm__exc_cmp(VM *vm)
 {
   if (vm->op->args[1].value > vm->op->args[0].value)
   {
-    vm->cm = GREATER;
+    vm->cmp = GREATER;
   }
   else if (vm->op->args[1].value < vm->op->args[0].value)
   {
-    vm->cm = LESSER;
+    vm->cmp = LESSER;
   }
   else
   {
-    vm->cm = EQUALS;
+    vm->cmp = EQUALS;
   }
 }

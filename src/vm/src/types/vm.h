@@ -19,7 +19,7 @@ typedef struct
   // Instruction pointer
   uint32_t ip;
   // Comparator
-  Comparator cm;
+  Comparator cmp;
   // Stack
   Stack *stack;
   // Current operation
