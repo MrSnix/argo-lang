@@ -53,6 +53,9 @@ void vm__decode(VM *vm, int32_t instr)
   case NOP:
     vm__dec_nop(vm);
     break;
+  case CLL:
+    vm__dec_cll(vm);
+    break;
   default:
     printf("Cannot decode unknown instruction: %d", instr);
     break;
@@ -107,6 +110,9 @@ void vm__execute(VM *vm)
     vm__exc_cmp(vm);
     break;
   case NOP:
+    break;
+  case CLL:
+    vm__exc_cll(vm);
     break;
   default:
     printf("Cannot execute instruction: %d", vm->op->id);

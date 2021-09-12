@@ -122,3 +122,5 @@ void vm__exc_cmp(VM *vm)
     vm->cmp = EQUALS;
   }
 }
+
+void vm__exc_cll(VM *vm) {}

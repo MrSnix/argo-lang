@@ -25,5 +25,6 @@ void vm__dec_jmg(VM *vm);
 void vm__dec_jml(VM *vm);
 void vm__dec_nop(VM *vm);
 void vm__dec_cmp(VM *vm);
+void vm__dec_cll(VM *vm);
 
 #endif

@@ -105,7 +105,8 @@ void vm__dec_mul(VM *vm)
   Operation *op = vm__op_create(MUL, "MUL", vm->ip, MUL_ARGS);
 
   op->args[0].name = "MUL0";
-  op->args[0].value = vm__stack_pop(vm->stack);;
+  op->args[0].value = vm__stack_pop(vm->stack);
+  ;
   op->args[0].addr = vm__stack_size(vm->stack);
 
   op->args[1].name = "MUL1";
@@ -208,6 +209,17 @@ void vm__dec_cmp(VM *vm)
   op->args[1].name = "OP1";
   op->args[1].value = vm__stack_peek(vm->stack, vm->stack->offset - 1);
   op->args[1].addr = vm__stack_size(vm->stack);
+
+  vm->op = op;
+}
+
+void vm__dec_cll(VM *vm)
+{
+  Operation *op = vm__op_create(CLL, "CLL", vm->ip, CLL_ARGS);
+
+  op->args[0].name = "ID";
+  op->args[0].value = vm__stack_top(vm->stack);
+  op->args[0].addr = vm__stack_size(vm->stack);
 
   vm->op = op;
 }

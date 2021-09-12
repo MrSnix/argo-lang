@@ -15,7 +15,8 @@ typedef enum {
   JMG_ARGS = 1,
   JML_ARGS = 1,
   CMP_ARGS = 2,
-  NOP_ARGS = 0
+  NOP_ARGS = 0,
+  CLL_ARGS = 1,
 } OpCodeArgs;
 
 typedef enum {
@@ -32,7 +33,8 @@ typedef enum {
   JMN,
   JMG,
   JML,
-  CMP
+  CMP,
+  CLL
 } OpCode;
 
 #endif
