@@ -6,7 +6,6 @@
 #include "../core/runtime.h"
 #include "../core/decoder.h"
 #include "../core/options.h"
-#include "../core/eflags.h"
 #include "../types/isa/operation.h"
 #include "../diagnostic/snapshots.h"
 
@@ -17,7 +16,6 @@ static VM *vm__init(const int32_t *bytecode)
   vm->running = false;
   vm->bytecode = bytecode;
   vm->ip = 0;
-  vm->flags = vm__eflags_create();
   vm->stack = vm__stack_create(STACK_DEFAULT_SIZE, STACK_1MB_SIZE);
   vm->op = NULL;
   vm->opts = NULL;
@@ -55,7 +53,6 @@ void vm__run(VM *vm)
 void vm__free(VM **vm)
 {
   vm__stack_free(&(*vm)->stack);
-  vm__eflags_free(&(*vm)->flags);
   vm__opts_free(&(*vm)->opts);
   free(*vm);
   *vm = NULL;

@@ -4,8 +4,9 @@
 #include "../core/stack.h"
 #include "../core/runtime.h"
 
-bool vm__exc_hlt(VM *vm) { 
-  vm->running = false; 
+bool vm__exc_hlt(VM *vm)
+{
+  vm->running = false;
   return false;
 }
 
@@ -60,7 +61,7 @@ bool vm__exc_jmp(VM *vm)
 
 bool vm__exc_jme(VM *vm)
 {
-  bool cmp = vm->flags->CM == EQUALS;
+  bool cmp = vm->cm == EQUALS;
 
   if (cmp)
   {
@@ -72,7 +73,7 @@ bool vm__exc_jme(VM *vm)
 
 bool vm__exc_jmn(VM *vm)
 {
-  bool cmp = vm->flags->CM != EQUALS;
+  bool cmp = vm->cm != EQUALS;
 
   if (cmp)
   {
@@ -84,7 +85,7 @@ bool vm__exc_jmn(VM *vm)
 
 bool vm__exc_jmg(VM *vm)
 {
-  bool cmp = vm->flags->CM == GREATER;
+  bool cmp = vm->cm == GREATER;
 
   if (cmp)
   {
@@ -96,7 +97,7 @@ bool vm__exc_jmg(VM *vm)
 
 bool vm__exc_jml(VM *vm)
 {
-  bool cmp = vm->flags->CM == LESSER;
+  bool cmp = vm->cm == LESSER;
 
   if (cmp)
   {
@@ -110,14 +111,14 @@ void vm__exc_cmp(VM *vm)
 {
   if (vm->op->args[1].value > vm->op->args[0].value)
   {
-    vm->flags->CM = GREATER;
+    vm->cm = GREATER;
   }
   else if (vm->op->args[1].value < vm->op->args[0].value)
   {
-    vm->flags->CM = LESSER;
+    vm->cm = LESSER;
   }
   else
   {
-    vm->flags->CM = EQUALS;
+    vm->cm = EQUALS;
   }
 }

@@ -6,8 +6,9 @@
 
 #include "isa/operation.h"
 #include "stack.h"
-#include "eflags.h"
 #include "options.h"
+
+typedef enum { LESSER = -1, EQUALS = 0, GREATER = 1 } Comparator;
 
 typedef struct
 {
@@ -17,8 +18,8 @@ typedef struct
   const int32_t *bytecode;
   // Instruction pointer
   uint32_t ip;
-  // Flags
-  EFLAGS *flags;
+  // Comparator
+  Comparator cm;
   // Stack
   Stack *stack;
   // Current operation

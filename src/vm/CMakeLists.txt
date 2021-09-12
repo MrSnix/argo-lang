@@ -14,7 +14,6 @@ list(APPEND argo_src
     src/internal/loop.c
     src/internal/operations.c 
     src/internal/parser.c
-    src/internal/eflags.c 
     src/internal/stack.c 
     src/internal/vm.c 
 )
