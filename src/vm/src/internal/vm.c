@@ -10,8 +10,8 @@
 #include "../diagnostic/snapshots.h"
 #include "../types/isa/operation.h"
 
-static VM *vm__init(const int32_t *bytecode) {
-  VM *vm = (VM *)malloc(sizeof(VM));
+static vm_t *vm__init(const int32_t *bytecode) {
+  vm_t *vm = (vm_t *)malloc(sizeof(vm_t));
 
   vm->running = false;
   vm->bytecode = bytecode;
@@ -24,13 +24,13 @@ static VM *vm__init(const int32_t *bytecode) {
   return vm;
 }
 
-VM *vm__create(const int32_t *bytecode, vm__opts_t *opts) {
-  VM *vm = vm__init(bytecode);
+vm_t *vm__create(const int32_t *bytecode, vm__opts_t *opts) {
+  vm_t *vm = vm__init(bytecode);
   vm->opts = opts == NULL ? vm__opts_create(NULL) : opts;
   return vm;
 }
 
-void vm__run(VM *vm) {
+void vm__run(vm_t *vm) {
   // Init
   vm->running = true;
   // Execute cycle
@@ -48,7 +48,7 @@ void vm__run(VM *vm) {
   }
 }
 
-void vm__free(VM **vm) {
+void vm__free(vm_t **vm) {
   vm__stack_free(&(*vm)->stack);
   vm__opts_free(&(*vm)->opts);
   free(*vm);

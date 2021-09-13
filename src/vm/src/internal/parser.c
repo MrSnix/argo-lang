@@ -39,11 +39,11 @@ void vm__op_args_free(OpArgument **args) {
   *args = NULL;
 }
 
-void vm__dec_hlt(VM *vm) {
+void vm__dec_hlt(vm_t *vm) {
   vm->op = vm__op_create(HLT, "HLT", vm->ip, HLT_ARGS);
 }
 
-void vm__dec_psh(VM *vm) {
+void vm__dec_psh(vm_t *vm) {
   Operation *op = vm__op_create(PSH, "PSH", vm->ip, PSH_ARGS);
 
   op->args[0].name = "VALUE";
@@ -53,7 +53,7 @@ void vm__dec_psh(VM *vm) {
   vm->op = op;
 }
 
-void vm__dec_pop(VM *vm) {
+void vm__dec_pop(vm_t *vm) {
   Operation *op = vm__op_create(POP, "POP", vm->ip, POP_ARGS);
 
   op->args[0].name = "VALUE";
@@ -63,7 +63,7 @@ void vm__dec_pop(VM *vm) {
   vm->op = op;
 }
 
-void vm__dec_add(VM *vm) {
+void vm__dec_add(vm_t *vm) {
   Operation *op = vm__op_create(ADD, "ADD", vm->ip, ADD_ARGS);
 
   op->args[0].name = "ADD0";
@@ -77,7 +77,7 @@ void vm__dec_add(VM *vm) {
   vm->op = op;
 }
 
-void vm__dec_sub(VM *vm) {
+void vm__dec_sub(vm_t *vm) {
   Operation *op = vm__op_create(SUB, "SUB", vm->ip, SUB_ARGS);
 
   op->args[0].name = "SUB0";
@@ -91,7 +91,7 @@ void vm__dec_sub(VM *vm) {
   vm->op = op;
 }
 
-void vm__dec_mul(VM *vm) {
+void vm__dec_mul(vm_t *vm) {
   Operation *op = vm__op_create(MUL, "MUL", vm->ip, MUL_ARGS);
 
   op->args[0].name = "MUL0";
@@ -106,7 +106,7 @@ void vm__dec_mul(VM *vm) {
   vm->op = op;
 }
 
-void vm__dec_div(VM *vm) {
+void vm__dec_div(vm_t *vm) {
   Operation *op = vm__op_create(DIV, "DIV", vm->ip, DIV_ARGS);
 
   op->args[0].name = "DIV0";
@@ -120,7 +120,7 @@ void vm__dec_div(VM *vm) {
   vm->op = op;
 }
 
-void vm__dec_jmp(VM *vm) {
+void vm__dec_jmp(vm_t *vm) {
   Operation *op = vm__op_create(JMP, "JMP", vm->ip, JMP_ARGS);
 
   op->args[0].name = "VALUE";
@@ -130,7 +130,7 @@ void vm__dec_jmp(VM *vm) {
   vm->op = op;
 }
 
-void vm__dec_jme(VM *vm) {
+void vm__dec_jme(vm_t *vm) {
   Operation *op = vm__op_create(JME, "JME", vm->ip, JMP_ARGS);
 
   op->args[0].name = "VALUE";
@@ -140,7 +140,7 @@ void vm__dec_jme(VM *vm) {
   vm->op = op;
 }
 
-void vm__dec_jmn(VM *vm) {
+void vm__dec_jmn(vm_t *vm) {
   Operation *op = vm__op_create(JMN, "JMN", vm->ip, JMP_ARGS);
 
   op->args[0].name = "VALUE";
@@ -150,7 +150,7 @@ void vm__dec_jmn(VM *vm) {
   vm->op = op;
 }
 
-void vm__dec_jmg(VM *vm) {
+void vm__dec_jmg(vm_t *vm) {
   Operation *op = vm__op_create(JMG, "JMG", vm->ip, JMP_ARGS);
 
   op->args[0].name = "VALUE";
@@ -160,7 +160,7 @@ void vm__dec_jmg(VM *vm) {
   vm->op = op;
 }
 
-void vm__dec_jml(VM *vm) {
+void vm__dec_jml(vm_t *vm) {
   Operation *op = vm__op_create(JML, "JML", vm->ip, JMP_ARGS);
 
   op->args[0].name = "VALUE";
@@ -170,11 +170,11 @@ void vm__dec_jml(VM *vm) {
   vm->op = op;
 }
 
-void vm__dec_nop(VM *vm) {
+void vm__dec_nop(vm_t *vm) {
   vm->op = vm__op_create(NOP, "NOP", vm->ip, NOP_ARGS);
 }
 
-void vm__dec_cmp(VM *vm) {
+void vm__dec_cmp(vm_t *vm) {
   Operation *op = vm__op_create(CMP, "CMP", vm->ip, CMP_ARGS);
 
   op->args[0].name = "OP0";
@@ -188,7 +188,7 @@ void vm__dec_cmp(VM *vm) {
   vm->op = op;
 }
 
-void vm__dec_cll(VM *vm) {
+void vm__dec_cll(vm_t *vm) {
   Operation *op = vm__op_create(CLL, "CLL", vm->ip, CLL_ARGS);
 
   op->args[0].name = "ID";

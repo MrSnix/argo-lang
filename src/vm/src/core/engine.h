@@ -3,8 +3,8 @@
 
 #include "../types/vm.h"
 
-VM *vm__create(const int32_t *bytecode, vm__opts_t *opts);
-void vm__run(VM *vm);
-void vm__free(VM **vm);
+vm_t *vm__create(const int32_t *bytecode, vm__opts_t *opts);
+void vm__run(vm_t *vm);
+void vm__free(vm_t **vm);
 
 #endif

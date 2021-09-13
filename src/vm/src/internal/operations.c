@@ -4,40 +4,40 @@
 #include "../core/runtime.h"
 #include "../core/stack.h"
 
-bool vm__exc_hlt(VM *vm) {
+bool vm__exc_hlt(vm_t *vm) {
   vm->running = false;
   return false;
 }
 
-void vm__exc_psh(VM *vm) {
+void vm__exc_psh(vm_t *vm) {
   // PSH to stack
   vm__stack_push(vm->stack, vm->op->args[0].value);
 }
 
-void vm__exc_pop(VM *vm) { vm__stack_pop(vm->stack); }
+void vm__exc_pop(vm_t *vm) { vm__stack_pop(vm->stack); }
 
-void vm__exc_add(VM *vm) {
+void vm__exc_add(vm_t *vm) {
   // Result
   int32_t res = vm->op->args[0].value + vm->op->args[1].value;
   // PSH to stack
   vm__stack_push(vm->stack, res);
 }
 
-void vm__exc_sub(VM *vm) {
+void vm__exc_sub(vm_t *vm) {
   // Result
   int32_t res = vm->op->args[0].value - vm->op->args[1].value;
   // PSH to stack
   vm__stack_push(vm->stack, res);
 }
 
-void vm__exc_mul(VM *vm) {
+void vm__exc_mul(vm_t *vm) {
   // Result
   int32_t res = vm->op->args[0].value * vm->op->args[1].value;
   // PSH to stack
   vm__stack_push(vm->stack, res);
 }
 
-void vm__exc_div(VM *vm) {
+void vm__exc_div(vm_t *vm) {
   // Op
   int32_t div = vm->op->args[0].value / vm->op->args[1].value;
   int32_t rem = vm->op->args[0].value % vm->op->args[1].value;
@@ -46,13 +46,13 @@ void vm__exc_div(VM *vm) {
   vm__stack_push(vm->stack, rem);
 }
 
-bool vm__exc_jmp(VM *vm) {
+bool vm__exc_jmp(vm_t *vm) {
   vm__set_ip(vm, vm->op->args[0].value);
   // When we jump, we don't increase
   return false;
 }
 
-bool vm__exc_jme(VM *vm) {
+bool vm__exc_jme(vm_t *vm) {
   bool cmp = vm->cmp == EQUALS;
 
   if (cmp) {
@@ -62,7 +62,7 @@ bool vm__exc_jme(VM *vm) {
   return !cmp;
 }
 
-bool vm__exc_jmn(VM *vm) {
+bool vm__exc_jmn(vm_t *vm) {
   bool cmp = vm->cmp != EQUALS;
 
   if (cmp) {
@@ -72,7 +72,7 @@ bool vm__exc_jmn(VM *vm) {
   return !cmp;
 }
 
-bool vm__exc_jmg(VM *vm) {
+bool vm__exc_jmg(vm_t *vm) {
   bool cmp = vm->cmp == GREATER;
 
   if (cmp) {
@@ -82,7 +82,7 @@ bool vm__exc_jmg(VM *vm) {
   return !cmp;
 }
 
-bool vm__exc_jml(VM *vm) {
+bool vm__exc_jml(vm_t *vm) {
   bool cmp = vm->cmp == LESSER;
 
   if (cmp) {
@@ -92,7 +92,7 @@ bool vm__exc_jml(VM *vm) {
   return !cmp;
 }
 
-void vm__exc_cmp(VM *vm) {
+void vm__exc_cmp(vm_t *vm) {
   if (vm->op->args[1].value > vm->op->args[0].value) {
     vm->cmp = GREATER;
   } else if (vm->op->args[1].value < vm->op->args[0].value) {
@@ -102,4 +102,4 @@ void vm__exc_cmp(VM *vm) {
   }
 }
 
-void vm__exc_cll(VM *vm) {}
+void vm__exc_cll(vm_t *vm) {}

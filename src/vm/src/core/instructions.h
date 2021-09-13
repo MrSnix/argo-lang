@@ -3,19 +3,19 @@
 
 #include "../types/vm.h"
 
-bool vm__exc_hlt(VM *vm);
-void vm__exc_pop(VM *vm);
-void vm__exc_psh(VM *vm);
-void vm__exc_add(VM *vm);
-void vm__exc_sub(VM *vm);
-void vm__exc_mul(VM *vm);
-void vm__exc_div(VM *vm);
-bool vm__exc_jmp(VM *vm);
-bool vm__exc_jme(VM *vm);
-bool vm__exc_jmn(VM *vm);
-bool vm__exc_jmg(VM *vm);
-bool vm__exc_jml(VM *vm);
-void vm__exc_cmp(VM *vm);
-void vm__exc_cll(VM *vm);
+bool vm__exc_hlt(vm_t *vm);
+void vm__exc_pop(vm_t *vm);
+void vm__exc_psh(vm_t *vm);
+void vm__exc_add(vm_t *vm);
+void vm__exc_sub(vm_t *vm);
+void vm__exc_mul(vm_t *vm);
+void vm__exc_div(vm_t *vm);
+bool vm__exc_jmp(vm_t *vm);
+bool vm__exc_jme(vm_t *vm);
+bool vm__exc_jmn(vm_t *vm);
+bool vm__exc_jmg(vm_t *vm);
+bool vm__exc_jml(vm_t *vm);
+void vm__exc_cmp(vm_t *vm);
+void vm__exc_cll(vm_t *vm);
 
 #endif

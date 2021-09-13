@@ -5,7 +5,7 @@
 
 #include "../core/stack.h"
 
-void vm__snaps_operation(VM *vm) {
+void vm__snaps_operation(vm_t *vm) {
   printf("+========================================+\n");
   printf("| <OPERATION>%*s|\n", 28, "");
   printf("+========================================+\n");
@@ -39,7 +39,7 @@ void vm__snaps_operation(VM *vm) {
   printf("+----------------------------------------+\n");
 }
 
-void vm__snaps_memory(VM *vm) {
+void vm__snaps_memory(vm_t *vm) {
   printf("+========================================+\n");
   printf("| <STACK>%*s|\n", 32, "");
   printf("+========================================+\n");
@@ -68,7 +68,7 @@ void vm__snaps_memory(VM *vm) {
   printf("+----------------------------------------+\n");
 }
 
-void vm__snaps_internal(VM *vm) {
+void vm__snaps_internal(vm_t *vm) {
   printf("+========================================+\n");
   printf("| <VM>%*s|\n", 35, "");
   printf("+========================================+\n");
@@ -82,7 +82,7 @@ void vm__snaps_internal(VM *vm) {
   printf("+----------------------------------------+\n");
 }
 
-void vm__snaps(VM *vm) {
+void vm__snaps(vm_t *vm) {
   if (vm->opts->snaps->internal) vm__snaps_internal(vm);
   if (vm->opts->snaps->operation) vm__snaps_operation(vm);
   if (vm->opts->snaps->memory) vm__snaps_memory(vm);

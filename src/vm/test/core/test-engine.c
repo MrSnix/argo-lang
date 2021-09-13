@@ -6,7 +6,7 @@ MunitResult vm__create_test() {
   // HLT instruction bytecode
   const int32_t *bytecode = {0};
   // VM instance
-  VM *vm = vm__create(bytecode, NULL);
+  vm_t *vm = vm__create(bytecode, NULL);
   // Asserting
   assert_false(vm->running);
   assert_ptr_equal(bytecode, vm->bytecode);
@@ -22,7 +22,7 @@ MunitResult vm__run_test() {
   // HLT instruction bytecode
   const int32_t bytecode[] = {0, 0};
   // VM instance
-  VM *vm = vm__create(bytecode, NULL);
+  vm_t *vm = vm__create(bytecode, NULL);
   // Make it run
   vm__run(vm);
   // Asserting
@@ -38,7 +38,7 @@ MunitResult vm__free_test() {
   // HLT instruction bytecode
   const int32_t *bytecode = {0};
   // VM instance
-  VM *vm = vm__create(bytecode, NULL);
+  vm_t *vm = vm__create(bytecode, NULL);
   // Now freeing
   vm__free(&vm);
   // Asserting

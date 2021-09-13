@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
   // Execute with given args
   if (opts->in != NULL || bytecode != NULL) {
     // Create vm
-    VM *vm = vm__create(bytecode, opts);
+    vm_t *vm = vm__create(bytecode, opts);
     // Execute
     vm__run(vm);
     // Clean

@@ -7,7 +7,7 @@
 #include "../core/instructions.h"
 #include "../diagnostic/snapshots.h"
 
-void vm__decode(VM *vm, int32_t instr) {
+void vm__decode(vm_t *vm, int32_t instr) {
   switch (instr) {
     case HLT:
       vm__dec_hlt(vm);
@@ -60,7 +60,7 @@ void vm__decode(VM *vm, int32_t instr) {
   }
 }
 
-void vm__execute(VM *vm) {
+void vm__execute(vm_t *vm) {
   bool increase_ip = true;
 
   switch (vm->op->id) {
@@ -117,16 +117,16 @@ void vm__execute(VM *vm) {
   if (increase_ip) vm__increase_ip(vm);
 }
 
-void vm__increase_ip(VM *vm) { vm->ip += 1; }
-void vm__decrease_ip(VM *vm) { vm->ip -= 1; }
-void vm__set_ip(VM *vm, int32_t addr) { vm->ip = addr; }
-int32_t vm__current_ip(VM *vm) { return vm->ip; }
+void vm__increase_ip(vm_t *vm) { vm->ip += 1; }
+void vm__decrease_ip(vm_t *vm) { vm->ip -= 1; }
+void vm__set_ip(vm_t *vm, int32_t addr) { vm->ip = addr; }
+int32_t vm__current_ip(vm_t *vm) { return vm->ip; }
 
-int32_t vm__fetch(VM *vm) { return vm->bytecode[vm->ip]; }
-int32_t vm__fetch_peek(VM *vm, int32_t offset) {
+int32_t vm__fetch(vm_t *vm) { return vm->bytecode[vm->ip]; }
+int32_t vm__fetch_peek(vm_t *vm, int32_t offset) {
   return vm->bytecode[vm->ip + offset];
 }
-int32_t vm__fetch_next(VM *vm) {
+int32_t vm__fetch_next(vm_t *vm) {
   vm__increase_ip(vm);
   return vm->bytecode[vm->ip];
 }
