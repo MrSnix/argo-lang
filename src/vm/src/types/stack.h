@@ -9,9 +9,9 @@
 typedef struct {
   int32_t *data;
   int32_t offset;
-  int32_t counter;
-  int32_t size;
-  int32_t max;
+  uint32_t counter;
+  uint32_t size;
+  uint32_t max;
 } vm__stack_t;
 
 #endif

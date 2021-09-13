@@ -8,7 +8,7 @@ static void vm__stack_create_data(vm__stack_t *stack) {
   // Allocate array of pointers
   stack->data = (int32_t *)malloc(sizeof(int32_t *) * stack->size);
   // For each pointer allocate memory for an int32_t
-  for (int i = 0; i < stack->size; ++i) {
+  for (uint32_t i = 0; i < stack->size; ++i) {
     // Set to zero
     stack->data[i] = 0;
   }
@@ -40,7 +40,7 @@ static void vm__stack_grow(vm__stack_t *stack) {
   stack->size += 8;
   int32_t *tmp = (int32_t *)malloc(sizeof(int32_t *) * stack->size);
 
-  for (int32_t i = 0; i < stack->size - 8; i++) {
+  for (uint32_t i = 0; i < stack->size - 8; i++) {
     tmp[i] = stack->data[i];
   }
 
