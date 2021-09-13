@@ -57,7 +57,7 @@ void vm__snaps_memory(vm_t *vm) {
     printf("| %-14s %-12s %-10s |\n", "TYPE", "ADDR", "VALUE");
     printf("+----------------------------------------+\n");
 
-    for (int32_t i = 0; i < vm->stack->counter; ++i) {
+    for (uint32_t i = 0; i < vm->stack->counter; ++i) {
       printf("| %-14s %-12d %-10d |\n", "(int32_t)", i,
              vm__stack_peek(vm->stack, i));
     }
