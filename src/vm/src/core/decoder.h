@@ -4,7 +4,7 @@
 #include "../types/vm.h"
 
 Operation *vm__op_create(OpCode id, char *name, uint32_t ip, uint8_t args_size);
-Operation *vm__op_clone(Operation* op);
+Operation *vm__op_clone(Operation *op);
 
 void vm__op_free(Operation **op);
 

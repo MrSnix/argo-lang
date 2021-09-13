@@ -5,13 +5,12 @@
 #include <stdint.h>
 
 #include "isa/operation.h"
-#include "stack.h"
 #include "options.h"
+#include "stack.h"
 
 typedef enum { LESSER = -1, EQUALS = 0, GREATER = 1 } Comparator;
 
-typedef struct
-{
+typedef struct {
   // Is VM running?
   bool running;
   // Program instructions

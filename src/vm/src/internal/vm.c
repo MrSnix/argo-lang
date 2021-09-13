@@ -2,15 +2,15 @@
 #include "../core/engine.h"
 // [IMPL] Headers
 #include <stdlib.h>
-#include "../core/stack.h"
-#include "../core/runtime.h"
+
 #include "../core/decoder.h"
 #include "../core/options.h"
-#include "../types/isa/operation.h"
+#include "../core/runtime.h"
+#include "../core/stack.h"
 #include "../diagnostic/snapshots.h"
+#include "../types/isa/operation.h"
 
-static VM *vm__init(const int32_t *bytecode)
-{
+static VM *vm__init(const int32_t *bytecode) {
   VM *vm = (VM *)malloc(sizeof(VM));
 
   vm->running = false;
@@ -24,20 +24,17 @@ static VM *vm__init(const int32_t *bytecode)
   return vm;
 }
 
-VM *vm__create(const int32_t *bytecode, OptionsVM *opts)
-{
+VM *vm__create(const int32_t *bytecode, OptionsVM *opts) {
   VM *vm = vm__init(bytecode);
   vm->opts = opts == NULL ? vm__opts_create(NULL) : opts;
   return vm;
 }
 
-void vm__run(VM *vm)
-{
+void vm__run(VM *vm) {
   // Init
   vm->running = true;
   // Execute cycle
-  while (vm->running)
-  {
+  while (vm->running) {
     // Read
     int32_t instruction = vm__fetch(vm);
     // Decode
@@ -51,8 +48,7 @@ void vm__run(VM *vm)
   }
 }
 
-void vm__free(VM **vm)
-{
+void vm__free(VM **vm) {
   vm__stack_free(&(*vm)->stack);
   vm__opts_free(&(*vm)->opts);
   free(*vm);

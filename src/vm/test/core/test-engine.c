@@ -1,11 +1,12 @@
 #include "test-engine.h"
+
 #include <engine.h>
 
 MunitResult vm__create_test() {
-  // HLT instruction bytecode  
-  const int32_t *bytecode = { 0 };
+  // HLT instruction bytecode
+  const int32_t *bytecode = {0};
   // VM instance
-  VM* vm = vm__create(bytecode, NULL);
+  VM *vm = vm__create(bytecode, NULL);
   // Asserting
   assert_false(vm->running);
   assert_ptr_equal(bytecode, vm->bytecode);
@@ -18,10 +19,10 @@ MunitResult vm__create_test() {
 }
 
 MunitResult vm__run_test() {
-  // HLT instruction bytecode  
-  const int32_t bytecode[] = { 0, 0 };
+  // HLT instruction bytecode
+  const int32_t bytecode[] = {0, 0};
   // VM instance
-  VM* vm = vm__create(bytecode, NULL);
+  VM *vm = vm__create(bytecode, NULL);
   // Make it run
   vm__run(vm);
   // Asserting
@@ -34,14 +35,14 @@ MunitResult vm__run_test() {
 }
 
 MunitResult vm__free_test() {
-  // HLT instruction bytecode  
-  const int32_t *bytecode = { 0 };
+  // HLT instruction bytecode
+  const int32_t *bytecode = {0};
   // VM instance
-  VM* vm = vm__create(bytecode, NULL);
+  VM *vm = vm__create(bytecode, NULL);
   // Now freeing
   vm__free(&vm);
   // Asserting
   assert_null(vm);
-  
+
   return MUNIT_OK;
 }

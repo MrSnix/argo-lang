@@ -1,31 +1,37 @@
 // [HEAD] Definitions
 #include "../core/cli.h"
 // [IMPL] Headers
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 ArgsCLI *vm__cli_create(int argc, char *argv[]) {
-
-  ArgsCLI *args = (ArgsCLI*)malloc(sizeof(ArgsCLI));
+  ArgsCLI *args = (ArgsCLI *)malloc(sizeof(ArgsCLI));
 
   args->name = CLI_NAME;
   args->exe_name = CLI_EXE_NAME;
   args->version = CLI_VERSION;
 
-  args->vm = (ArgsVM*)malloc(sizeof(ArgsVM));
-  
+  args->vm = (ArgsVM *)malloc(sizeof(ArgsVM));
+
   args->vm->in = arg_filen(NULL, NULL, "<file>", 1, 100, "Input file(s)"),
 
-  args->vm->snaps = arg_litn("s", "snapshots", 0, 1, "Turn on run-time any snapshot logger");
-  args->vm->snaps__internal = arg_litn(NULL, "sInt", 0, 1, "Turn on run-time snapshot logger (internal-only)");
-  args->vm->snaps__memory = arg_litn(NULL, "sMem", 0, 1, "Turn on run-time snapshot logger (memory-only)");
-  args->vm->snaps__operation = arg_litn(NULL, "sOpr", 0, 1, "Turn on run-time snapshot logger (operation-only)");
+  args->vm->snaps =
+      arg_litn("s", "snapshots", 0, 1, "Turn on run-time any snapshot logger");
+  args->vm->snaps__internal = arg_litn(
+      NULL, "sInt", 0, 1, "Turn on run-time snapshot logger (internal-only)");
+  args->vm->snaps__memory = arg_litn(
+      NULL, "sMem", 0, 1, "Turn on run-time snapshot logger (memory-only)");
+  args->vm->snaps__operation = arg_litn(
+      NULL, "sOpr", 0, 1, "Turn on run-time snapshot logger (operation-only)");
 
-  args->vm->benchmark = arg_litn("b", "benchmark", 0, 1, "Turn on run-time performance logging");
+  args->vm->benchmark =
+      arg_litn("b", "benchmark", 0, 1, "Turn on run-time performance logging");
 
-  args->common = (ArgsCommon*)malloc(sizeof(ArgsCommon));
-  args->common->help = arg_litn(NULL, "help", 0, 1, "Display this help and exit");
-  args->common->version = arg_litn(NULL, "version", 0, 1, "Displays version information and exit");
+  args->common = (ArgsCommon *)malloc(sizeof(ArgsCommon));
+  args->common->help =
+      arg_litn(NULL, "help", 0, 1, "Display this help and exit");
+  args->common->version =
+      arg_litn(NULL, "version", 0, 1, "Displays version information and exit");
   args->common->end = arg_end(CLI_ERRORS);
 
   args->table[0] = args->vm->in;
@@ -76,7 +82,6 @@ void vm__cli_errors(ArgsCLI *args) {
 }
 
 ArgsCLI *vm__cli(int argc, char *argv[]) {
-
   ArgsCLI *args = vm__cli_create(argc, argv);
 
   /* special case: '--help' takes precedence over error reporting */

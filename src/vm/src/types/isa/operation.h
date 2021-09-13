@@ -2,6 +2,7 @@
 #define ARGO_VM__TYPES_OPERATION_H
 
 #include <stdint.h>
+
 #include "opcode.h"
 
 typedef struct {

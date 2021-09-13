@@ -3,24 +3,21 @@
 
 #include <stdbool.h>
 
-typedef struct
-{
-    unsigned int size;
-    unsigned int *breakpoints;
+typedef struct {
+  unsigned int size;
+  unsigned int *breakpoints;
 } DebuggerOptionsVM;
 
-typedef struct
-{
-    bool internal;
-    bool operation;
-    bool memory;
+typedef struct {
+  bool internal;
+  bool operation;
+  bool memory;
 } SnapshotOptionsVM;
 
-typedef struct
-{
-    const char *in;
-    SnapshotOptionsVM *snaps;
-    DebuggerOptionsVM *dbg;
+typedef struct {
+  const char *in;
+  SnapshotOptionsVM *snaps;
+  DebuggerOptionsVM *dbg;
 } OptionsVM;
 
 #endif

@@ -4,21 +4,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static void vm__stack_create_data(Stack *stack)
-{
+static void vm__stack_create_data(Stack *stack) {
   // Allocate array of pointers
   stack->data = (int32_t *)malloc(sizeof(int32_t *) * stack->size);
   // For each pointer allocate memory for an int32_t
-  for (int i = 0; i < stack->size; ++i)
-  {
+  for (int i = 0; i < stack->size; ++i) {
     // Set to zero
     stack->data[i] = 0;
   }
 }
 
-Stack *vm__stack_create(int32_t current_size, int32_t max_size)
-{
-
+Stack *vm__stack_create(int32_t current_size, int32_t max_size) {
   Stack *stack = (Stack *)malloc(sizeof(Stack));
 
   stack->size = current_size;
@@ -32,8 +28,7 @@ Stack *vm__stack_create(int32_t current_size, int32_t max_size)
   return stack;
 }
 
-void vm__stack_free(Stack **stack)
-{
+void vm__stack_free(Stack **stack) {
   free((*stack)->data);
   (*stack)->data = NULL;
 
@@ -41,13 +36,11 @@ void vm__stack_free(Stack **stack)
   *stack = NULL;
 }
 
-static void vm__stack_grow(Stack *stack)
-{
+static void vm__stack_grow(Stack *stack) {
   stack->size += 8;
   int32_t *tmp = (int32_t *)malloc(sizeof(int32_t *) * stack->size);
 
-  for (int32_t i = 0; i < stack->size - 8; i++)
-  {
+  for (int32_t i = 0; i < stack->size - 8; i++) {
     tmp[i] = stack->data[i];
   }
 
@@ -55,26 +48,20 @@ static void vm__stack_grow(Stack *stack)
   stack->data = tmp;
 }
 
-void vm__stack_push(Stack *stack, int32_t value)
-{
+void vm__stack_push(Stack *stack, int32_t value) {
   assert(stack->size < stack->max);
 
-  if (stack->counter < stack->size)
-  {
+  if (stack->counter < stack->size) {
     stack->offset++;
     stack->data[stack->offset] = value;
     stack->counter++;
-  }
-  else
-  {
+  } else {
     vm__stack_grow(stack);
     vm__stack_push(stack, value);
   }
 }
 
-int32_t vm__stack_pop(Stack *stack)
-{
-
+int32_t vm__stack_pop(Stack *stack) {
   int32_t top = stack->data[stack->offset];
 
   assert(!vm__stack_empty(stack));
@@ -90,4 +77,6 @@ int32_t vm__stack_pop(Stack *stack)
 int32_t vm__stack_size(Stack *stack) { return stack->counter; }
 int32_t vm__stack_empty(Stack *stack) { return stack->counter == 0; }
 int32_t vm__stack_top(Stack *stack) { return stack->data[stack->offset]; }
-int32_t vm__stack_peek(Stack *stack, int32_t offset) { return stack->data[offset]; }
+int32_t vm__stack_peek(Stack *stack, int32_t offset) {
+  return stack->data[offset];
+}

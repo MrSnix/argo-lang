@@ -6,8 +6,7 @@
 #define STACK_DEFAULT_SIZE 8
 #define STACK_1MB_SIZE 250000
 
-typedef struct
-{
+typedef struct {
   int32_t *data;
   int32_t offset;
   int32_t counter;

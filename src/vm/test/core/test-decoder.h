@@ -3,8 +3,8 @@
 
 #define MUNIT_ENABLE_ASSERT_ALIASES
 
-#include <munit.h>
 #include <decoder.h>
+#include <munit.h>
 
 MunitResult vm__op_create_test();
 MunitResult vm__op_free_test();
