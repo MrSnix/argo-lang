@@ -3,7 +3,7 @@
 // [HEAD] Implementation
 #include <stdlib.h>
 
-OptionsVM *vm__opts_create(ArgsVM *args) {
+OptionsVM *vm__opts_create(vm__cli_args_t *args) {
   OptionsVM *ptr = (OptionsVM *)malloc(sizeof(OptionsVM));
 
   ptr->in = NULL;

@@ -11,7 +11,7 @@ vm__cli_t *vm__cli_create(int argc, char *argv[]) {
   args->exe_name = CLI_EXE_NAME;
   args->version = CLI_VERSION;
 
-  args->vm = (ArgsVM *)malloc(sizeof(ArgsVM));
+  args->vm = (vm__cli_args_t *)malloc(sizeof(vm__cli_args_t));
 
   args->vm->in = arg_filen(NULL, NULL, "<file>", 1, 100, "Input file(s)"),
 

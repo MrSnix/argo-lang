@@ -19,7 +19,7 @@ typedef struct {
   struct arg_lit *snaps__internal;
   struct arg_lit *snaps__memory;
   struct arg_lit *snaps__operation;
-} ArgsVM;
+} vm__cli_args_t;
 
 typedef struct {
   struct arg_lit *version;
@@ -31,7 +31,7 @@ typedef struct {
   char *name;
   char *exe_name;
   char *version;
-  ArgsVM *vm;
+  vm__cli_args_t *vm;
   vm__cli_cmm_t *common;
   void *table[CLI_ARGS];
   int errors;
