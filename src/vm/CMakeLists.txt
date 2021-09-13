@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.21)
 project(ArgoVM)
 
-add_compile_options(-Wall -Wextra -pedantic -Werror)
+add_compile_options(-Wall -Wextra -pedantic)
 
 set (CMAKE_C_FLAGS "-fsanitize=address")
 
