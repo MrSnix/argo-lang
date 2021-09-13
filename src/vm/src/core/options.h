@@ -4,8 +4,8 @@
 #include "../types/cli.h"
 #include "../types/options.h"
 
-OptionsVM *vm__opts_create(vm__cli_args_t *args);
-void vm__opts_free(OptionsVM **opts);
+vm__opts_t *vm__opts_create(vm__cli_args_t *args);
+void vm__opts_free(vm__opts_t **opts);
 
 DebuggerOptionsVM *vm__opts_dbg_create(unsigned int size);
 void vm__opts_dbg_free(DebuggerOptionsVM **dbg);

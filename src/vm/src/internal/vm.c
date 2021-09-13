@@ -24,7 +24,7 @@ static VM *vm__init(const int32_t *bytecode) {
   return vm;
 }
 
-VM *vm__create(const int32_t *bytecode, OptionsVM *opts) {
+VM *vm__create(const int32_t *bytecode, vm__opts_t *opts) {
   VM *vm = vm__init(bytecode);
   vm->opts = opts == NULL ? vm__opts_create(NULL) : opts;
   return vm;

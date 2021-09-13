@@ -18,6 +18,6 @@ typedef struct {
   const char *in;
   SnapshotOptionsVM *snaps;
   DebuggerOptionsVM *dbg;
-} OptionsVM;
+} vm__opts_t;
 
 #endif

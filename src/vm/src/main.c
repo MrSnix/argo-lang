@@ -8,7 +8,7 @@ int main(int argc, char *argv[]) {
   // Parse command line
   vm__cli_t *cli = vm__cli(argc, argv);
   // Convert to compatible vm options interface
-  OptionsVM *opts = vm__opts_create(cli->vm);
+  vm__opts_t *opts = vm__opts_create(cli->vm);
   // Execute with given args
   if (opts->in != NULL || bytecode != NULL) {
     // Create vm

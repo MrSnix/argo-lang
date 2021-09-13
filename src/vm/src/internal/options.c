@@ -3,8 +3,8 @@
 // [HEAD] Implementation
 #include <stdlib.h>
 
-OptionsVM *vm__opts_create(vm__cli_args_t *args) {
-  OptionsVM *ptr = (OptionsVM *)malloc(sizeof(OptionsVM));
+vm__opts_t *vm__opts_create(vm__cli_args_t *args) {
+  vm__opts_t *ptr = (vm__opts_t *)malloc(sizeof(vm__opts_t));
 
   ptr->in = NULL;
   ptr->snaps = vm__opts_snaps_create();
@@ -73,7 +73,7 @@ void vm__opts_dbg_free(DebuggerOptionsVM **dbg) {
   }
 }
 
-void vm__opts_free(OptionsVM **opts) {
+void vm__opts_free(vm__opts_t **opts) {
   vm__opts_dbg_free(&(*opts)->dbg);
   vm__opts_snaps_free(&(*opts)->snaps);
   free(*opts);

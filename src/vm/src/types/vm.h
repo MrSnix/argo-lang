@@ -24,7 +24,7 @@ typedef struct {
   // Current operation
   Operation *op;
   // Options
-  OptionsVM *opts;
+  vm__opts_t *opts;
 } VM;
 
 #endif
