@@ -17,7 +17,7 @@ typedef enum {
   CMP_ARGS = 2,
   NOP_ARGS = 0,
   CLL_ARGS = 1,
-} OpCodeArgs;
+} vm__code_args_t;
 
 typedef enum {
   HLT,
