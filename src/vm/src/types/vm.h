@@ -22,7 +22,7 @@ typedef struct {
   // Stack
   vm__stack_t *stack;
   // Current operation
-  Operation *op;
+  vm__op_t *op;
   // Options
   vm__opts_t *opts;
 } vm_t;

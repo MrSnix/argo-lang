@@ -3,10 +3,10 @@
 
 #include "../types/vm.h"
 
-Operation *vm__op_create(OpCode id, char *name, uint32_t ip, uint8_t args_size);
-Operation *vm__op_clone(Operation *op);
+vm__op_t *vm__op_create(OpCode id, char *name, uint32_t ip, uint8_t args_size);
+vm__op_t *vm__op_clone(vm__op_t *op);
 
-void vm__op_free(Operation **op);
+void vm__op_free(vm__op_t **op);
 
 OpArgument *vm__op_args_create(uint8_t args_size);
 void vm__op_args_free(OpArgument **arg);

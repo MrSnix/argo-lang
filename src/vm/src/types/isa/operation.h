@@ -17,6 +17,6 @@ typedef struct {
   OpArgument *args;
   uint8_t args_size;
   int32_t addr;
-} Operation;
+} vm__op_t;
 
 #endif
