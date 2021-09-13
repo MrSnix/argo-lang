@@ -35,6 +35,6 @@ typedef enum {
   JML,
   CMP,
   CLL
-} OpCode;
+} vm__code_t;
 
 #endif

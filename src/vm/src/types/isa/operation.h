@@ -12,7 +12,7 @@ typedef struct {
 } vm__op_args_t;
 
 typedef struct {
-  OpCode id;
+  vm__code_t id;
   char *name;
   vm__op_args_t *args;
   uint8_t args_size;
