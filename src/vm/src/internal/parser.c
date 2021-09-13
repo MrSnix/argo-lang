@@ -30,11 +30,11 @@ void vm__op_free(vm__op_t **op) {
   *op = NULL;
 }
 
-OpArgument *vm__op_args_create(uint8_t args_size) {
-  return (OpArgument *)malloc(sizeof(OpArgument) * args_size);
+vm__op_args_t *vm__op_args_create(uint8_t args_size) {
+  return (vm__op_args_t *)malloc(sizeof(vm__op_args_t) * args_size);
 }
 
-void vm__op_args_free(OpArgument **args) {
+void vm__op_args_free(vm__op_args_t **args) {
   free(*args);
   *args = NULL;
 }

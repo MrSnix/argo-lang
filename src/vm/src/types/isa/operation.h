@@ -9,12 +9,12 @@ typedef struct {
   char *name;
   int32_t value;
   int32_t addr;
-} OpArgument;
+} vm__op_args_t;
 
 typedef struct {
   OpCode id;
   char *name;
-  OpArgument *args;
+  vm__op_args_t *args;
   uint8_t args_size;
   int32_t addr;
 } vm__op_t;
