@@ -6,7 +6,7 @@
 int main(int argc, char *argv[]) {
   int32_t bytecode[] = {PSH, 1, PSH, 1, ADD, POP, HLT};
   // Parse command line
-  ArgsCLI *cli = vm__cli(argc, argv);
+  vm__cli_t *cli = vm__cli(argc, argv);
   // Convert to compatible vm options interface
   OptionsVM *opts = vm__opts_create(cli->vm);
   // Execute with given args

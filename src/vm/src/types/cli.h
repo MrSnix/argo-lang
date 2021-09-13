@@ -36,6 +36,6 @@ typedef struct {
   void *table[CLI_ARGS];
   int errors;
   int status;
-} ArgsCLI;
+} vm__cli_t;
 
 #endif
