@@ -6,5 +6,6 @@
     },
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
+    "editor.formatOnSave": true,
     "cmake.sourceDirectory": "${workspaceFolder}/src/vm"
 }
