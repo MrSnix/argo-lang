@@ -12,11 +12,11 @@ typedef struct {
   bool internal;
   bool operation;
   bool memory;
-} SnapshotOptionsVM;
+} vm__opts_snaps_t;
 
 typedef struct {
   const char *in;
-  SnapshotOptionsVM *snaps;
+  vm__opts_snaps_t *snaps;
   DebuggerOptionsVM *dbg;
 } vm__opts_t;
 

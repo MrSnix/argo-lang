@@ -37,16 +37,16 @@ vm__opts_t *vm__opts_create(vm__cli_args_t *args) {
   return ptr;
 }
 
-SnapshotOptionsVM *vm__opts_snaps_create() {
-  SnapshotOptionsVM *ptr =
-      (SnapshotOptionsVM *)malloc(sizeof(SnapshotOptionsVM));
+vm__opts_snaps_t *vm__opts_snaps_create() {
+  vm__opts_snaps_t *ptr =
+      (vm__opts_snaps_t *)malloc(sizeof(vm__opts_snaps_t));
   ptr->internal = false;
   ptr->memory = false;
   ptr->operation = false;
   return ptr;
 }
 
-void vm__opts_snaps_free(SnapshotOptionsVM **snaps) {
+void vm__opts_snaps_free(vm__opts_snaps_t **snaps) {
   free(*snaps);
   *snaps = NULL;
 }

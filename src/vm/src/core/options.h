@@ -10,7 +10,7 @@ void vm__opts_free(vm__opts_t **opts);
 DebuggerOptionsVM *vm__opts_dbg_create(unsigned int size);
 void vm__opts_dbg_free(DebuggerOptionsVM **dbg);
 
-SnapshotOptionsVM *vm__opts_snaps_create();
-void vm__opts_snaps_free(SnapshotOptionsVM **snaps);
+vm__opts_snaps_t *vm__opts_snaps_create();
+void vm__opts_snaps_free(vm__opts_snaps_t **snaps);
 
 #endif
