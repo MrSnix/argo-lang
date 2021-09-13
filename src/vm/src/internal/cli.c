@@ -27,7 +27,7 @@ vm__cli_t *vm__cli_create(int argc, char *argv[]) {
   args->vm->benchmark =
       arg_litn("b", "benchmark", 0, 1, "Turn on run-time performance logging");
 
-  args->common = (ArgsCommon *)malloc(sizeof(ArgsCommon));
+  args->common = (vm__cli_cmm_t *)malloc(sizeof(vm__cli_cmm_t));
   args->common->help =
       arg_litn(NULL, "help", 0, 1, "Display this help and exit");
   args->common->version =

@@ -25,14 +25,14 @@ typedef struct {
   struct arg_lit *version;
   struct arg_lit *help;
   struct arg_end *end;
-} ArgsCommon;
+} vm__cli_cmm_t;
 
 typedef struct {
   char *name;
   char *exe_name;
   char *version;
   ArgsVM *vm;
-  ArgsCommon *common;
+  vm__cli_cmm_t *common;
   void *table[CLI_ARGS];
   int errors;
   int status;
