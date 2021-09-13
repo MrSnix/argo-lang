@@ -20,7 +20,7 @@ typedef struct {
   // Comparator
   Comparator cmp;
   // Stack
-  Stack *stack;
+  vm__stack_t *stack;
   // Current operation
   Operation *op;
   // Options

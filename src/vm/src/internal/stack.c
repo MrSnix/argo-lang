@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static void vm__stack_create_data(Stack *stack) {
+static void vm__stack_create_data(vm__stack_t *stack) {
   // Allocate array of pointers
   stack->data = (int32_t *)malloc(sizeof(int32_t *) * stack->size);
   // For each pointer allocate memory for an int32_t
@@ -14,8 +14,8 @@ static void vm__stack_create_data(Stack *stack) {
   }
 }
 
-Stack *vm__stack_create(int32_t current_size, int32_t max_size) {
-  Stack *stack = (Stack *)malloc(sizeof(Stack));
+vm__stack_t *vm__stack_create(int32_t current_size, int32_t max_size) {
+  vm__stack_t *stack = (vm__stack_t *)malloc(sizeof(vm__stack_t));
 
   stack->size = current_size;
   stack->max = max_size;
@@ -28,7 +28,7 @@ Stack *vm__stack_create(int32_t current_size, int32_t max_size) {
   return stack;
 }
 
-void vm__stack_free(Stack **stack) {
+void vm__stack_free(vm__stack_t **stack) {
   free((*stack)->data);
   (*stack)->data = NULL;
 
@@ -36,7 +36,7 @@ void vm__stack_free(Stack **stack) {
   *stack = NULL;
 }
 
-static void vm__stack_grow(Stack *stack) {
+static void vm__stack_grow(vm__stack_t *stack) {
   stack->size += 8;
   int32_t *tmp = (int32_t *)malloc(sizeof(int32_t *) * stack->size);
 
@@ -48,7 +48,7 @@ static void vm__stack_grow(Stack *stack) {
   stack->data = tmp;
 }
 
-void vm__stack_push(Stack *stack, int32_t value) {
+void vm__stack_push(vm__stack_t *stack, int32_t value) {
   assert(stack->size < stack->max);
 
   if (stack->counter < stack->size) {
@@ -61,7 +61,7 @@ void vm__stack_push(Stack *stack, int32_t value) {
   }
 }
 
-int32_t vm__stack_pop(Stack *stack) {
+int32_t vm__stack_pop(vm__stack_t *stack) {
   int32_t top = stack->data[stack->offset];
 
   assert(!vm__stack_empty(stack));
@@ -74,9 +74,9 @@ int32_t vm__stack_pop(Stack *stack) {
   return top;
 }
 
-int32_t vm__stack_size(Stack *stack) { return stack->counter; }
-int32_t vm__stack_empty(Stack *stack) { return stack->counter == 0; }
-int32_t vm__stack_top(Stack *stack) { return stack->data[stack->offset]; }
-int32_t vm__stack_peek(Stack *stack, int32_t offset) {
+int32_t vm__stack_size(vm__stack_t *stack) { return stack->counter; }
+int32_t vm__stack_empty(vm__stack_t *stack) { return stack->counter == 0; }
+int32_t vm__stack_top(vm__stack_t *stack) { return stack->data[stack->offset]; }
+int32_t vm__stack_peek(vm__stack_t *stack, int32_t offset) {
   return stack->data[offset];
 }

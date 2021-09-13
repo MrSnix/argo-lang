@@ -12,6 +12,6 @@ typedef struct {
   int32_t counter;
   int32_t size;
   int32_t max;
-} Stack;
+} vm__stack_t;
 
 #endif
