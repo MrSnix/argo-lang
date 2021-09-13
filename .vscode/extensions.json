@@ -5,6 +5,7 @@
         "joaompinto.vscode-graphviz",
         "ms-vscode.hexeditor",
         "ms-vscode.cmake-tools",
-        "twxs.cmake"
+        "twxs.cmake",
+        "xaver.clang-format"
     ]
 }
