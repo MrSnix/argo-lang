@@ -51,12 +51,12 @@ void vm__opts_snaps_free(vm__opts_snaps_t **snaps) {
   *snaps = NULL;
 }
 
-DebuggerOptionsVM *vm__opts_dbg_create(unsigned int size) {
-  DebuggerOptionsVM *ptr = NULL;
+vm__opts_dbg_t *vm__opts_dbg_create(unsigned int size) {
+  vm__opts_dbg_t *ptr = NULL;
 
   if (size) {
-    DebuggerOptionsVM *ptr =
-        (DebuggerOptionsVM *)malloc(sizeof(DebuggerOptionsVM));
+    vm__opts_dbg_t *ptr =
+        (vm__opts_dbg_t *)malloc(sizeof(vm__opts_dbg_t));
     ptr->size = size;
     ptr->breakpoints = (unsigned int *)malloc(sizeof(unsigned int) * size);
   }
@@ -64,7 +64,7 @@ DebuggerOptionsVM *vm__opts_dbg_create(unsigned int size) {
   return ptr;
 }
 
-void vm__opts_dbg_free(DebuggerOptionsVM **dbg) {
+void vm__opts_dbg_free(vm__opts_dbg_t **dbg) {
   if (*dbg != NULL) {
     free((*dbg)->breakpoints);
     (*dbg)->breakpoints = NULL;

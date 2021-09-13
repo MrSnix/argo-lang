@@ -6,7 +6,7 @@
 typedef struct {
   unsigned int size;
   unsigned int *breakpoints;
-} DebuggerOptionsVM;
+} vm__opts_dbg_t;
 
 typedef struct {
   bool internal;
@@ -17,7 +17,7 @@ typedef struct {
 typedef struct {
   const char *in;
   vm__opts_snaps_t *snaps;
-  DebuggerOptionsVM *dbg;
+  vm__opts_dbg_t *dbg;
 } vm__opts_t;
 
 #endif
