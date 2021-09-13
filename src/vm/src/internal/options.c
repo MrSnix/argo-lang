@@ -38,8 +38,7 @@ vm__opts_t *vm__opts_create(vm__cli_args_t *args) {
 }
 
 vm__opts_snaps_t *vm__opts_snaps_create() {
-  vm__opts_snaps_t *ptr =
-      (vm__opts_snaps_t *)malloc(sizeof(vm__opts_snaps_t));
+  vm__opts_snaps_t *ptr = (vm__opts_snaps_t *)malloc(sizeof(vm__opts_snaps_t));
   ptr->internal = false;
   ptr->memory = false;
   ptr->operation = false;
@@ -55,8 +54,7 @@ vm__opts_dbg_t *vm__opts_dbg_create(unsigned int size) {
   vm__opts_dbg_t *ptr = NULL;
 
   if (size) {
-    vm__opts_dbg_t *ptr =
-        (vm__opts_dbg_t *)malloc(sizeof(vm__opts_dbg_t));
+    vm__opts_dbg_t *ptr = (vm__opts_dbg_t *)malloc(sizeof(vm__opts_dbg_t));
     ptr->size = size;
     ptr->breakpoints = (unsigned int *)malloc(sizeof(unsigned int) * size);
   }
