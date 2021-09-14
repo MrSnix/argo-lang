@@ -13,6 +13,7 @@ list(APPEND argo_src
     src/internal/options.c 
     src/internal/loop.c
     src/internal/operations.c 
+    src/internal/bytecode.c 
     src/internal/parser.c
     src/internal/stack.c 
     src/internal/vm.c 
