@@ -1,0 +1,21 @@
+# The following .arg equals to this code:
+#
+# function sum(int a, int b) {
+#   return a + b;
+# }
+# function main() {
+#   return sum(5, 4);
+# }
+#
+
+:sum {
+    ADD
+    RET
+}
+
+:main {
+    PSH, 5
+    PSH, 4
+    CLL, sum
+    HLT
+}
