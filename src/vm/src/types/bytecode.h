@@ -14,6 +14,7 @@ typedef struct {
   uint32_t ip;
   int32_t *data;
   uint32_t data_size;
+  uint16_t caller;
 } vm__bc_routine_t;
 
 typedef struct {

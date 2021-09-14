@@ -23,6 +23,7 @@ vm__bc_routine_t *vm__routine_create(uint16_t id, const char *name,
   ptr->data = malloc(sizeof(int32_t) * data_size);
   ptr->data_size = data_size;
   memcpy(ptr->data, data, sizeof(int32_t) * data_size);
+  ptr->caller = 0;
   return ptr;
 }
 
