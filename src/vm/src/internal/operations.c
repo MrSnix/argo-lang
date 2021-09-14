@@ -102,4 +102,11 @@ void vm__exc_cmp(vm_t *vm) {
   }
 }
 
-void vm__exc_cll(vm_t *vm) {}
+void vm__exc_cll(vm_t *vm) {
+  // Save current return address
+  uint16_t return_address = vm->bc->main->id;
+  // Switch to new call frame
+  vm->bc->main = vm->bc->routines[vm->op->args[0].value];
+  // Set the caller address
+  vm->bc->main->caller = return_address;
+}
