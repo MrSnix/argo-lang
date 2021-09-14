@@ -15,7 +15,7 @@ typedef struct {
   // Is VM running?
   bool running;
   // Program instructions
-  const vm__bc_t *bc;
+  vm__bc_t *bc;
   // Comparator
   Comparator cmp;
   // Stack

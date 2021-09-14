@@ -13,7 +13,7 @@ static vm__bc_t *init() {
 
 int main(int argc, char *argv[]) {
   // Create sample class-file
-  const vm__bc_t *bc = init();
+  vm__bc_t *bc = init();
   // Parse command line
   vm__cli_t *cli = vm__cli(argc, argv);
   // Convert to compatible vm options interface
