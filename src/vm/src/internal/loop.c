@@ -122,11 +122,11 @@ void vm__decrease_ip(vm_t *vm) { vm->ip -= 1; }
 void vm__set_ip(vm_t *vm, int32_t addr) { vm->ip = addr; }
 int32_t vm__current_ip(vm_t *vm) { return vm->ip; }
 
-int32_t vm__fetch(vm_t *vm) { return vm->bytecode[vm->ip]; }
+int32_t vm__fetch(vm_t *vm) { return vm->bytecode->main->data[vm->ip]; }
 int32_t vm__fetch_peek(vm_t *vm, int32_t offset) {
-  return vm->bytecode[vm->ip + offset];
+  return vm->bytecode->main->data[vm->ip + offset];
 }
 int32_t vm__fetch_next(vm_t *vm) {
   vm__increase_ip(vm);
-  return vm->bytecode[vm->ip];
+  return vm->bytecode->main->data[vm->ip];
 }
