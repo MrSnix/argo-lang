@@ -1,4 +1,4 @@
-grammar argo;
+grammar Argo;
 
 prog
    : (line? EOL)+
