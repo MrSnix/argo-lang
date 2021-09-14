@@ -1,10 +1,19 @@
+#include "core/bytecode.h"
 #include "core/cli.h"
 #include "core/engine.h"
 #include "core/options.h"
 #include "types/isa/opcode.h"
 
+static vm__bc_t *init() {
+  int32_t main[] = {HLT};
+  vm__bc_version_t version = {.major = 1, .minor = 0};
+  vm__bc_routine_t *table[] = {vm__routine_create(0, "main", 1, main)};
+  return vm__bc_create(version, 1, table);
+}
+
 int main(int argc, char *argv[]) {
-  int32_t bc[] = {PSH, 1, PSH, 1, ADD, POP, HLT};
+  // Create sample class-file
+  const vm__bc_t *bc = init();
   // Parse command line
   vm__cli_t *cli = vm__cli(argc, argv);
   // Convert to compatible vm options interface
