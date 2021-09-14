@@ -1,19 +1,24 @@
 grammar argo;
 
 prog
-   : (routine EOL) +
+   : (line? EOL)+
+   ;
+
+line
+   : comment
+   | routine
    ;
 
 routine
-   : ':' label '{' instruction+ '}'
+   : label OPEN_STMT EOL (instruction EOL)+ CLOSE_STMT
    ;
 
 instruction
-   : opcode (',' argument)?
+   : opcode (ARG_SEP argument)?
    ;
 
 label
-   : name
+   : ID_DECL name
    ;
 
 argument
@@ -44,6 +49,22 @@ comment
 
 OPCODE
    : (H L T) | (N O P) | (P S H) | (P O P) | (A D D) | (S U B) | (M U L) | (D I V) | (J M P) | (J M E) | (J M N) | (J M G) | (J M L) | (C M P) | (C L L) | (R E T)
+   ;
+
+ARG_SEP
+   : ','
+   ;
+
+ID_DECL
+   : ':'
+   ;
+
+OPEN_STMT
+   : '{'
+   ;
+
+CLOSE_STMT
+   : '}'
    ;
 
 fragment A
@@ -153,18 +174,23 @@ fragment Z
 NAME
    : [a-zA-Z] [a-zA-Z0-9."]*
    ;
+
 NUMBER
-   : '$'? [0-9a-fA-F] +
+   : [0-9]+
    ;
+
 COMMENT
    : '#' ~ [\r\n]* -> skip
    ;
+
 STRING
    : '"' ~ ["]* '"'
    ;
+
 EOL
    : [\r\n] +
    ;
+
 WS
    : [ \t] -> skip
    ;
