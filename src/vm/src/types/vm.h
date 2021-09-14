@@ -16,8 +16,6 @@ typedef struct {
   bool running;
   // Program instructions
   const vm__bc_t *bytecode;
-  // Instruction pointer
-  uint32_t ip;
   // Comparator
   Comparator cmp;
   // Stack
