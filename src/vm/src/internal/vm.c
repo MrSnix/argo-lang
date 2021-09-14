@@ -3,10 +3,10 @@
 // [IMPL] Headers
 #include <stdlib.h>
 
+#include "../core/bytecode.h"
 #include "../core/decoder.h"
 #include "../core/options.h"
 #include "../core/runtime.h"
-#include "../core/bytecode.h"
 #include "../core/stack.h"
 #include "../diagnostic/snapshots.h"
 #include "../types/isa/operation.h"

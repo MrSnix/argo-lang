@@ -5,8 +5,8 @@
 
 vm__bc_t *vm__bc_create(vm__bc_version_t version, uint16_t routines_size,
                         vm__bc_routine_t *routines[]) {
-  vm__bc_t *ptr = malloc(sizeof(vm__bc_t) +
-                                     sizeof(vm__bc_routine_t *[routines_size]));
+  vm__bc_t *ptr =
+      malloc(sizeof(vm__bc_t) + sizeof(vm__bc_routine_t *[routines_size]));
   ptr->version = version;
   ptr->routines_size = routines_size;
   memcpy(ptr->routines, routines, sizeof(vm__bc_routine_t *) * routines_size);

@@ -23,8 +23,7 @@ vm__cli_t *vm__cli_create(int argc, char *argv[]) {
   args->vm->benchmark =
       arg_litn("b", "benchmark", 0, 1, "Turn on run-time performance logging");
 
-  args->help =
-      arg_litn(NULL, "help", 0, 1, "Display this help and exit");
+  args->help = arg_litn(NULL, "help", 0, 1, "Display this help and exit");
   args->version =
       arg_litn(NULL, "version", 0, 1, "Displays version information and exit");
   args->end = arg_end(CLI_ERRORS);

@@ -4,10 +4,10 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#include "bytecode.h"
 #include "isa/operation.h"
 #include "options.h"
 #include "stack.h"
-#include "bytecode.h"
 
 typedef enum { LESSER = -1, EQUALS = 0, GREATER = 1 } Comparator;
 
