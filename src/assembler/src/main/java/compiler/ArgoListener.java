@@ -1,4 +1,4 @@
-package antlr4;
+package compiler;
 
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
