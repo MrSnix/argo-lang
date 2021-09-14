@@ -1,6 +1,9 @@
-import antlr4.ArgoBaseVisitor;
-import antlr4.ArgoLexer;
-import antlr4.ArgoParser;
+import bytecode.ClassFile;
+import bytecode.Generator;
+import compiler.ArgoBaseVisitor;
+import compiler.ArgoLexer;
+import compiler.ArgoParser;
+import io.ArgoWriter;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -24,8 +27,10 @@ public class Main {
 		// Get hierarchy (Program context)
 		ArgoParser.ProgContext tree = parser.prog();
 		// Create visitor to generate bytecode
-		ArgoBaseVisitor<Void> visitor = new ArgoBaseVisitor<>();
+		Generator visitor = new Generator();
 		// Visit
-		visitor.visit(tree);
+		final ClassFile classFile = visitor.visit(tree);
+		// Write on disk
+		ArgoWriter.write(classFile, "sum.argoc");
 	}
 }
