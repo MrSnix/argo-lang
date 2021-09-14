@@ -10,7 +10,7 @@
 #include "../diagnostic/snapshots.h"
 #include "../types/isa/operation.h"
 
-static vm_t *vm__init(const int32_t *bc) {
+static vm_t *vm__init(const vm__bc_t *bc) {
   vm_t *vm = (vm_t *)malloc(sizeof(vm_t));
 
   vm->running = false;
@@ -24,7 +24,7 @@ static vm_t *vm__init(const int32_t *bc) {
   return vm;
 }
 
-vm_t *vm__create(const int32_t *bc, vm__opts_t *opts) {
+vm_t *vm__create(const vm__bc_t *bc, vm__opts_t *opts) {
   vm_t *vm = vm__init(bc);
   vm->opts = opts == NULL ? vm__opts_create(NULL) : opts;
   return vm;
