@@ -17,7 +17,7 @@ typedef struct {
 
 typedef struct {
   vm__bc_version_t version;
-  vm__bc_routine_t main;
+  vm__bc_routine_t *main;
   vm__bc_routine_t *routines;
   uint16_t routines_size;
 } vm__bc_t;

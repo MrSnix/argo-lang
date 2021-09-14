@@ -7,6 +7,7 @@
 #include "isa/operation.h"
 #include "options.h"
 #include "stack.h"
+#include "bytecode.h"
 
 typedef enum { LESSER = -1, EQUALS = 0, GREATER = 1 } Comparator;
 
@@ -14,7 +15,7 @@ typedef struct {
   // Is VM running?
   bool running;
   // Program instructions
-  const int32_t *bytecode;
+  const vm__bc_t *bytecode;
   // Instruction pointer
   uint32_t ip;
   // Comparator
