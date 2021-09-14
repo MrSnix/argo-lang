@@ -6,6 +6,7 @@
 #include "../core/decoder.h"
 #include "../core/options.h"
 #include "../core/runtime.h"
+#include "../core/bytecode.h"
 #include "../core/stack.h"
 #include "../diagnostic/snapshots.h"
 #include "../types/isa/operation.h"
@@ -51,6 +52,7 @@ void vm__run(vm_t *vm) {
 void vm__free(vm_t **vm) {
   vm__stack_free(&(*vm)->stack);
   vm__opts_free(&(*vm)->opts);
+  vm__bc_free(&(*vm)->bc);
   free(*vm);
   *vm = NULL;
 }
