@@ -43,6 +43,17 @@ void vm__dec_hlt(vm_t *vm) {
   vm->op = vm__op_create(HLT, "HLT", vm->bc->main->ip, HLT_ARGS);
 }
 
+void vm__dec_ret(vm_t *vm) {
+  vm__op_t *op = vm__op_create(RET, "RET", vm->bc->main->ip, RET_ARGS);
+
+  op->args[0].name = "ID";
+  op->args[0].value = vm->bc->main->caller;
+  // Address is internal, not on stack
+  op->args[0].addr = -1;
+
+  vm->op = op;
+}
+
 void vm__dec_psh(vm_t *vm) {
   vm__op_t *op = vm__op_create(PSH, "PSH", vm->bc->main->ip, PSH_ARGS);
 

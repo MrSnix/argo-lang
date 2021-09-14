@@ -17,6 +17,7 @@ typedef enum {
   CMP_ARGS = 2,
   NOP_ARGS = 0,
   CLL_ARGS = 1,
+  RET_ARGS = 1,
 } vm__code_args_t;
 
 typedef enum {
@@ -34,7 +35,8 @@ typedef enum {
   JMG,
   JML,
   CMP,
-  CLL
+  CLL,
+  RET,
 } vm__code_t;
 
 #endif

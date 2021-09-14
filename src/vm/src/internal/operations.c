@@ -9,6 +9,13 @@ bool vm__exc_hlt(vm_t *vm) {
   return false;
 }
 
+bool vm__exc_ret(vm_t *vm) {
+  // Switch to new call frame
+  vm->bc->main = vm->bc->routines[vm->bc->main->caller];
+  // Do not increment, routine has been finished
+  return false;
+}
+
 void vm__exc_psh(vm_t *vm) {
   // PSH to stack
   vm__stack_push(vm->stack, vm->op->args[0].value);
@@ -102,11 +109,16 @@ void vm__exc_cmp(vm_t *vm) {
   }
 }
 
-void vm__exc_cll(vm_t *vm) {
+bool vm__exc_cll(vm_t *vm) {
   // Save current return address
   uint16_t return_address = vm->bc->main->id;
+  // Increase current ip now
+  vm->bc->main->ip++;
   // Switch to new call frame
   vm->bc->main = vm->bc->routines[vm->op->args[0].value];
   // Set the caller address
   vm->bc->main->caller = return_address;
+  // Do not increase ip now, we just switched
+  // we have to execute the zero instruction
+  return false;
 }
