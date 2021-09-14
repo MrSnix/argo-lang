@@ -6,6 +6,7 @@
 
 void vm__snaps(vm_t *vm);
 void vm__snaps_internal(vm_t *vm);
+void vm__snaps_callstack(vm_t *vm);
 void vm__snaps_operation(vm_t *vm);
 void vm__snaps_memory(vm_t *vm);
 
