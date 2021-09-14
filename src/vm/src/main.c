@@ -5,14 +5,19 @@
 #include "types/isa/opcode.h"
 
 static vm__bc_t *init() {
+  // Routines
   int32_t sum_rtn[] = {ADD, RET};
+  // Main routine
   int32_t main[] = {PSH, 5, PSH, 4, CLL, 1, HLT};
+  // Class infos
   vm__bc_version_t version = {.major = 1, .minor = 0};
+  // Remeber to set routine length 
   vm__bc_routine_t *table[] = {
     vm__routine_create(0, "main", 7, main),
     vm__routine_create(1, "sum(a, b)", 2, sum_rtn),
   };
-  return vm__bc_create(version, 1, table);
+  // Remember to set routine table new size
+  return vm__bc_create(version, 2, table);
 }
 
 int main(int argc, char *argv[]) {
