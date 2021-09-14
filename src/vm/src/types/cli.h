@@ -22,14 +22,10 @@ typedef struct {
 } vm__cli_args_t;
 
 typedef struct {
+  vm__cli_args_t *vm;
   struct arg_lit *version;
   struct arg_lit *help;
   struct arg_end *end;
-} vm__cli_cmm_t;
-
-typedef struct {
-  vm__cli_args_t *vm;
-  vm__cli_cmm_t *common;
   void *table[CLI_ARGS];
   int errors;
   int status;

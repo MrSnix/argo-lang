@@ -23,12 +23,11 @@ vm__cli_t *vm__cli_create(int argc, char *argv[]) {
   args->vm->benchmark =
       arg_litn("b", "benchmark", 0, 1, "Turn on run-time performance logging");
 
-  args->common = (vm__cli_cmm_t *)malloc(sizeof(vm__cli_cmm_t));
-  args->common->help =
+  args->help =
       arg_litn(NULL, "help", 0, 1, "Display this help and exit");
-  args->common->version =
+  args->version =
       arg_litn(NULL, "version", 0, 1, "Displays version information and exit");
-  args->common->end = arg_end(CLI_ERRORS);
+  args->end = arg_end(CLI_ERRORS);
 
   args->table[0] = args->vm->in;
   args->table[1] = args->vm->snaps;
@@ -36,9 +35,9 @@ vm__cli_t *vm__cli_create(int argc, char *argv[]) {
   args->table[3] = args->vm->snaps__memory;
   args->table[4] = args->vm->snaps__operation;
   args->table[5] = args->vm->benchmark;
-  args->table[6] = args->common->help;
-  args->table[7] = args->common->version;
-  args->table[8] = args->common->end;
+  args->table[6] = args->help;
+  args->table[7] = args->version;
+  args->table[8] = args->end;
 
   args->errors = arg_parse(argc, argv, args->table);
   args->status = args->errors ? args->errors : OK_CLI_EXIT;
@@ -52,7 +51,6 @@ int vm__cli_free(vm__cli_t **args) {
   // Now free
   arg_freetable((*args)->table, CLI_ARGS);
   free((*args)->vm);
-  free((*args)->common);
   free(*args);
   *args = NULL;
   return status;
@@ -72,7 +70,7 @@ void vm__cli_version(vm__cli_t *args) {
 
 void vm__cli_errors(vm__cli_t *args) {
   /* Display the error details contained in the arg_end struct.*/
-  arg_print_errors(stdout, args->common->end, CLI_EXE_NAME);
+  arg_print_errors(stdout, args->end, CLI_EXE_NAME);
   printf("Try '%s --help' for more information.\n", CLI_EXE_NAME);
   args->status = ERR_CLI_PARSE;
 }
@@ -81,9 +79,9 @@ vm__cli_t *vm__cli(int argc, char *argv[]) {
   vm__cli_t *args = vm__cli_create(argc, argv);
 
   /* special case: '--help' takes precedence over error reporting */
-  if (args->common->help->count > 0) {
+  if (args->help->count > 0) {
     vm__cli_help(args);
-  } else if (args->common->version->count > 0) {
+  } else if (args->version->count > 0) {
     vm__cli_version(args);
   } else if (args->errors > 0) {
     vm__cli_errors(args);
