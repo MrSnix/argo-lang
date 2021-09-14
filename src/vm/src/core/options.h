@@ -10,7 +10,6 @@ void vm__opts_free(vm__opts_t **opts);
 vm__opts_dbg_t *vm__opts_dbg_create(unsigned int size);
 void vm__opts_dbg_free(vm__opts_dbg_t **dbg);
 
-vm__opts_snaps_t *vm__opts_snaps_create();
-void vm__opts_snaps_free(vm__opts_snaps_t **snaps);
+vm__opts_snaps_t vm__opts_snaps_init();
 
 #endif

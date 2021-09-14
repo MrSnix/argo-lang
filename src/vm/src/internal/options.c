@@ -7,7 +7,7 @@ vm__opts_t *vm__opts_create(vm__cli_args_t *args) {
   vm__opts_t *ptr = (vm__opts_t *)malloc(sizeof(vm__opts_t));
 
   ptr->in = NULL;
-  ptr->snaps = vm__opts_snaps_create();
+  ptr->snaps = vm__opts_snaps_init();
   ptr->dbg = vm__opts_dbg_create(0);
 
   if (args != NULL) {
@@ -16,32 +16,32 @@ vm__opts_t *vm__opts_create(vm__cli_args_t *args) {
     }
 
     if (args->snaps->count > 0) {
-      ptr->snaps->internal = true;
-      ptr->snaps->memory = true;
-      ptr->snaps->operation = true;
+      ptr->snaps.internal = true;
+      ptr->snaps.memory = true;
+      ptr->snaps.operation = true;
     }
 
     if (args->snaps__internal->count > 0) {
-      ptr->snaps->internal = true;
+      ptr->snaps.internal = true;
     }
 
     if (args->snaps__memory->count > 0) {
-      ptr->snaps->memory = true;
+      ptr->snaps.memory = true;
     }
 
     if (args->snaps__operation->count > 0) {
-      ptr->snaps->operation = true;
+      ptr->snaps.operation = true;
     }
   }
 
   return ptr;
 }
 
-vm__opts_snaps_t *vm__opts_snaps_create() {
-  vm__opts_snaps_t *ptr = (vm__opts_snaps_t *)malloc(sizeof(vm__opts_snaps_t));
-  ptr->internal = false;
-  ptr->memory = false;
-  ptr->operation = false;
+vm__opts_snaps_t vm__opts_snaps_init() {
+  vm__opts_snaps_t ptr;
+  ptr.internal = false;
+  ptr.memory = false;
+  ptr.operation = false;
   return ptr;
 }
 
@@ -73,7 +73,6 @@ void vm__opts_dbg_free(vm__opts_dbg_t **dbg) {
 
 void vm__opts_free(vm__opts_t **opts) {
   vm__opts_dbg_free(&(*opts)->dbg);
-  vm__opts_snaps_free(&(*opts)->snaps);
   free(*opts);
   *opts = NULL;
 }

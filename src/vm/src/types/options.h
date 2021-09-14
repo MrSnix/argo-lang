@@ -16,7 +16,7 @@ typedef struct {
 
 typedef struct {
   const char *in;
-  vm__opts_snaps_t *snaps;
+  vm__opts_snaps_t snaps;
   vm__opts_dbg_t *dbg;
 } vm__opts_t;
 
