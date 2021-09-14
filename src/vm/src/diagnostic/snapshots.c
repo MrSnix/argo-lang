@@ -76,9 +76,10 @@ void vm__snaps_internal(vm_t *vm) {
   printf("+----------------------------------------+\n");
   printf("| %-14s %-12s %-10d |\n", "(bool)", "running", vm->running);
   printf("| %-14s %-12s %-10d |\n", "(Comparator)", "cmp", vm->cmp);
-  printf("| %-14s %-12s %-10d |\n", "(int32_t*)", "instr_ptr", vm->ip);
+  printf("| %-14s %-12s %-10d |\n", "(int32_t*)", "instr_ptr",
+         vm->bytecode->main->ip);
   printf("| %-14s %-12s %-10d |\n", "(int32_t*)", "bytecode",
-         vm->bytecode[vm->ip]);
+         vm->bytecode->main->data[vm->bytecode->main->ip]);
   printf("+----------------------------------------+\n");
 }
 

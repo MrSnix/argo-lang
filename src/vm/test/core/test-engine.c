@@ -10,7 +10,7 @@ MunitResult vm__create_test() {
   // Asserting
   assert_false(vm->running);
   assert_ptr_equal(bytecode, vm->bytecode);
-  assert_uint32(vm->ip, ==, 0);
+  assert_uint32(vm->bytecode->main->ip, ==, 0);
   assert_null(vm->op);
   assert_not_null(vm->opts);
   // Freeing
@@ -28,7 +28,7 @@ MunitResult vm__run_test() {
   // Asserting
   assert_false(vm->running);
   assert_ptr_equal(bytecode, vm->bytecode);
-  assert_uint32(vm->ip, ==, 1);
+  assert_uint32(vm->bytecode->main->ip, ==, 1);
   // Freeing
   vm__free(&vm);
   return MUNIT_OK;
