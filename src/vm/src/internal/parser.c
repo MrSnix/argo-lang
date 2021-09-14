@@ -40,11 +40,11 @@ void vm__op_args_free(vm__op_args_t **args) {
 }
 
 void vm__dec_hlt(vm_t *vm) {
-  vm->op = vm__op_create(HLT, "HLT", vm->bytecode->main->ip, HLT_ARGS);
+  vm->op = vm__op_create(HLT, "HLT", vm->bc->main->ip, HLT_ARGS);
 }
 
 void vm__dec_psh(vm_t *vm) {
-  vm__op_t *op = vm__op_create(PSH, "PSH", vm->bytecode->main->ip, PSH_ARGS);
+  vm__op_t *op = vm__op_create(PSH, "PSH", vm->bc->main->ip, PSH_ARGS);
 
   op->args[0].name = "VALUE";
   op->args[0].value = vm__fetch_next(vm);
@@ -54,7 +54,7 @@ void vm__dec_psh(vm_t *vm) {
 }
 
 void vm__dec_pop(vm_t *vm) {
-  vm__op_t *op = vm__op_create(POP, "POP", vm->bytecode->main->ip, POP_ARGS);
+  vm__op_t *op = vm__op_create(POP, "POP", vm->bc->main->ip, POP_ARGS);
 
   op->args[0].name = "VALUE";
   op->args[0].value = vm__stack_top(vm->stack);
@@ -64,7 +64,7 @@ void vm__dec_pop(vm_t *vm) {
 }
 
 void vm__dec_add(vm_t *vm) {
-  vm__op_t *op = vm__op_create(ADD, "ADD", vm->bytecode->main->ip, ADD_ARGS);
+  vm__op_t *op = vm__op_create(ADD, "ADD", vm->bc->main->ip, ADD_ARGS);
 
   op->args[0].name = "ADD0";
   op->args[0].value = vm__stack_pop(vm->stack);
@@ -78,7 +78,7 @@ void vm__dec_add(vm_t *vm) {
 }
 
 void vm__dec_sub(vm_t *vm) {
-  vm__op_t *op = vm__op_create(SUB, "SUB", vm->bytecode->main->ip, SUB_ARGS);
+  vm__op_t *op = vm__op_create(SUB, "SUB", vm->bc->main->ip, SUB_ARGS);
 
   op->args[0].name = "SUB0";
   op->args[0].value = vm__stack_pop(vm->stack);
@@ -92,7 +92,7 @@ void vm__dec_sub(vm_t *vm) {
 }
 
 void vm__dec_mul(vm_t *vm) {
-  vm__op_t *op = vm__op_create(MUL, "MUL", vm->bytecode->main->ip, MUL_ARGS);
+  vm__op_t *op = vm__op_create(MUL, "MUL", vm->bc->main->ip, MUL_ARGS);
 
   op->args[0].name = "MUL0";
   op->args[0].value = vm__stack_pop(vm->stack);
@@ -107,7 +107,7 @@ void vm__dec_mul(vm_t *vm) {
 }
 
 void vm__dec_div(vm_t *vm) {
-  vm__op_t *op = vm__op_create(DIV, "DIV", vm->bytecode->main->ip, DIV_ARGS);
+  vm__op_t *op = vm__op_create(DIV, "DIV", vm->bc->main->ip, DIV_ARGS);
 
   op->args[0].name = "DIV0";
   op->args[0].value = vm__stack_pop(vm->stack);
@@ -121,7 +121,7 @@ void vm__dec_div(vm_t *vm) {
 }
 
 void vm__dec_jmp(vm_t *vm) {
-  vm__op_t *op = vm__op_create(JMP, "JMP", vm->bytecode->main->ip, JMP_ARGS);
+  vm__op_t *op = vm__op_create(JMP, "JMP", vm->bc->main->ip, JMP_ARGS);
 
   op->args[0].name = "VALUE";
   op->args[0].value = vm__fetch_next(vm);
@@ -131,7 +131,7 @@ void vm__dec_jmp(vm_t *vm) {
 }
 
 void vm__dec_jme(vm_t *vm) {
-  vm__op_t *op = vm__op_create(JME, "JME", vm->bytecode->main->ip, JMP_ARGS);
+  vm__op_t *op = vm__op_create(JME, "JME", vm->bc->main->ip, JMP_ARGS);
 
   op->args[0].name = "VALUE";
   op->args[0].value = vm__fetch_next(vm);
@@ -141,7 +141,7 @@ void vm__dec_jme(vm_t *vm) {
 }
 
 void vm__dec_jmn(vm_t *vm) {
-  vm__op_t *op = vm__op_create(JMN, "JMN", vm->bytecode->main->ip, JMP_ARGS);
+  vm__op_t *op = vm__op_create(JMN, "JMN", vm->bc->main->ip, JMP_ARGS);
 
   op->args[0].name = "VALUE";
   op->args[0].value = vm__fetch_next(vm);
@@ -151,7 +151,7 @@ void vm__dec_jmn(vm_t *vm) {
 }
 
 void vm__dec_jmg(vm_t *vm) {
-  vm__op_t *op = vm__op_create(JMG, "JMG", vm->bytecode->main->ip, JMP_ARGS);
+  vm__op_t *op = vm__op_create(JMG, "JMG", vm->bc->main->ip, JMP_ARGS);
 
   op->args[0].name = "VALUE";
   op->args[0].value = vm__fetch_next(vm);
@@ -161,7 +161,7 @@ void vm__dec_jmg(vm_t *vm) {
 }
 
 void vm__dec_jml(vm_t *vm) {
-  vm__op_t *op = vm__op_create(JML, "JML", vm->bytecode->main->ip, JMP_ARGS);
+  vm__op_t *op = vm__op_create(JML, "JML", vm->bc->main->ip, JMP_ARGS);
 
   op->args[0].name = "VALUE";
   op->args[0].value = vm__fetch_next(vm);
@@ -171,11 +171,11 @@ void vm__dec_jml(vm_t *vm) {
 }
 
 void vm__dec_nop(vm_t *vm) {
-  vm->op = vm__op_create(NOP, "NOP", vm->bytecode->main->ip, NOP_ARGS);
+  vm->op = vm__op_create(NOP, "NOP", vm->bc->main->ip, NOP_ARGS);
 }
 
 void vm__dec_cmp(vm_t *vm) {
-  vm__op_t *op = vm__op_create(CMP, "CMP", vm->bytecode->main->ip, CMP_ARGS);
+  vm__op_t *op = vm__op_create(CMP, "CMP", vm->bc->main->ip, CMP_ARGS);
 
   op->args[0].name = "OP0";
   op->args[0].value = vm__stack_top(vm->stack);
@@ -189,7 +189,7 @@ void vm__dec_cmp(vm_t *vm) {
 }
 
 void vm__dec_cll(vm_t *vm) {
-  vm__op_t *op = vm__op_create(CLL, "CLL", vm->bytecode->main->ip, CLL_ARGS);
+  vm__op_t *op = vm__op_create(CLL, "CLL", vm->bc->main->ip, CLL_ARGS);
 
   op->args[0].name = "ID";
   op->args[0].value = vm__fetch_next(vm);

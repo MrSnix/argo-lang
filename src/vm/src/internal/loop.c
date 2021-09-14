@@ -117,18 +117,18 @@ void vm__execute(vm_t *vm) {
   if (increase_ip) vm__increase_ip(vm);
 }
 
-void vm__increase_ip(vm_t *vm) { vm->bytecode->main->ip += 1; }
-void vm__decrease_ip(vm_t *vm) { vm->bytecode->main->ip -= 1; }
-void vm__set_ip(vm_t *vm, int32_t addr) { vm->bytecode->main->ip = addr; }
-int32_t vm__current_ip(vm_t *vm) { return vm->bytecode->main->ip; }
+void vm__increase_ip(vm_t *vm) { vm->bc->main->ip += 1; }
+void vm__decrease_ip(vm_t *vm) { vm->bc->main->ip -= 1; }
+void vm__set_ip(vm_t *vm, int32_t addr) { vm->bc->main->ip = addr; }
+int32_t vm__current_ip(vm_t *vm) { return vm->bc->main->ip; }
 
 int32_t vm__fetch(vm_t *vm) {
-  return vm->bytecode->main->data[vm->bytecode->main->ip];
+  return vm->bc->main->data[vm->bc->main->ip];
 }
 int32_t vm__fetch_peek(vm_t *vm, int32_t offset) {
-  return vm->bytecode->main->data[vm->bytecode->main->ip + offset];
+  return vm->bc->main->data[vm->bc->main->ip + offset];
 }
 int32_t vm__fetch_next(vm_t *vm) {
   vm__increase_ip(vm);
-  return vm->bytecode->main->data[vm->bytecode->main->ip];
+  return vm->bc->main->data[vm->bc->main->ip];
 }

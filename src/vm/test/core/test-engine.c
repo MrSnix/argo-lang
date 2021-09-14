@@ -3,14 +3,14 @@
 #include <engine.h>
 
 MunitResult vm__create_test() {
-  // HLT instruction bytecode
-  const int32_t *bytecode = {0};
+  // HLT instruction bc
+  const int32_t *bc = {0};
   // VM instance
-  vm_t *vm = vm__create(bytecode, NULL);
+  vm_t *vm = vm__create(bc, NULL);
   // Asserting
   assert_false(vm->running);
-  assert_ptr_equal(bytecode, vm->bytecode);
-  assert_uint32(vm->bytecode->main->ip, ==, 0);
+  assert_ptr_equal(bc, vm->bc);
+  assert_uint32(vm->bc->main->ip, ==, 0);
   assert_null(vm->op);
   assert_not_null(vm->opts);
   // Freeing
@@ -19,26 +19,26 @@ MunitResult vm__create_test() {
 }
 
 MunitResult vm__run_test() {
-  // HLT instruction bytecode
-  const int32_t bytecode[] = {0, 0};
+  // HLT instruction bc
+  const int32_t bc[] = {0, 0};
   // VM instance
-  vm_t *vm = vm__create(bytecode, NULL);
+  vm_t *vm = vm__create(bc, NULL);
   // Make it run
   vm__run(vm);
   // Asserting
   assert_false(vm->running);
-  assert_ptr_equal(bytecode, vm->bytecode);
-  assert_uint32(vm->bytecode->main->ip, ==, 1);
+  assert_ptr_equal(bc, vm->bc);
+  assert_uint32(vm->bc->main->ip, ==, 1);
   // Freeing
   vm__free(&vm);
   return MUNIT_OK;
 }
 
 MunitResult vm__free_test() {
-  // HLT instruction bytecode
-  const int32_t *bytecode = {0};
+  // HLT instruction bc
+  const int32_t *bc = {0};
   // VM instance
-  vm_t *vm = vm__create(bytecode, NULL);
+  vm_t *vm = vm__create(bc, NULL);
   // Now freeing
   vm__free(&vm);
   // Asserting

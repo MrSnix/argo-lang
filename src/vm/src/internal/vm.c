@@ -10,12 +10,12 @@
 #include "../diagnostic/snapshots.h"
 #include "../types/isa/operation.h"
 
-static vm_t *vm__init(const int32_t *bytecode) {
+static vm_t *vm__init(const int32_t *bc) {
   vm_t *vm = (vm_t *)malloc(sizeof(vm_t));
 
   vm->running = false;
-  vm->bytecode = bytecode;
-  vm->bytecode->main->ip = 0;
+  vm->bc = bc;
+  vm->bc->main->ip = 0;
   vm->cmp = EQUALS;
   vm->stack = vm__stack_create(STACK_DEFAULT_SIZE, STACK_1MB_SIZE);
   vm->op = NULL;
@@ -24,8 +24,8 @@ static vm_t *vm__init(const int32_t *bytecode) {
   return vm;
 }
 
-vm_t *vm__create(const int32_t *bytecode, vm__opts_t *opts) {
-  vm_t *vm = vm__init(bytecode);
+vm_t *vm__create(const int32_t *bc, vm__opts_t *opts) {
+  vm_t *vm = vm__init(bc);
   vm->opts = opts == NULL ? vm__opts_create(NULL) : opts;
   return vm;
 }
