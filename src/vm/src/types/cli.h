@@ -4,7 +4,7 @@
 #define CLI_NAME "ArgoVM"
 #define CLI_EXE_NAME "argo"
 #define CLI_VERSION "0.0.1"
-#define CLI_ARGS 9
+#define CLI_ARGS 10
 #define CLI_ERRORS 20
 
 #include <argtable3.h>
@@ -19,6 +19,7 @@ typedef struct {
   struct arg_lit *snaps__internal;
   struct arg_lit *snaps__memory;
   struct arg_lit *snaps__operation;
+  struct arg_lit *snaps__callstack;
 } vm__cli_args_t;
 
 typedef struct {

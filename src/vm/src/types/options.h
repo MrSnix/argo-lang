@@ -12,6 +12,7 @@ typedef struct {
   bool internal;
   bool operation;
   bool memory;
+  bool callstack;
 } vm__opts_snaps_t;
 
 typedef struct {

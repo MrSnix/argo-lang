@@ -19,6 +19,8 @@ vm__cli_t *vm__cli_create(int argc, char *argv[]) {
       NULL, "sMem", 0, 1, "Turn on run-time snapshot logger (memory-only)");
   args->vm->snaps__operation = arg_litn(
       NULL, "sOpr", 0, 1, "Turn on run-time snapshot logger (operation-only)");
+  args->vm->snaps__callstack = arg_litn(
+      NULL, "sCll", 0, 1, "Turn on run-time snapshot logger (callstack-only)");
 
   args->vm->benchmark =
       arg_litn("b", "benchmark", 0, 1, "Turn on run-time performance logging");
@@ -33,10 +35,11 @@ vm__cli_t *vm__cli_create(int argc, char *argv[]) {
   args->table[2] = args->vm->snaps__internal;
   args->table[3] = args->vm->snaps__memory;
   args->table[4] = args->vm->snaps__operation;
-  args->table[5] = args->vm->benchmark;
-  args->table[6] = args->help;
-  args->table[7] = args->version;
-  args->table[8] = args->end;
+  args->table[5] = args->vm->snaps__callstack;
+  args->table[6] = args->vm->benchmark;
+  args->table[7] = args->help;
+  args->table[8] = args->version;
+  args->table[9] = args->end;
 
   args->errors = arg_parse(argc, argv, args->table);
   args->status = args->errors ? args->errors : OK_CLI_EXIT;

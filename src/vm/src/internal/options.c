@@ -19,6 +19,7 @@ vm__opts_t *vm__opts_create(vm__cli_args_t *args) {
       ptr->snaps.internal = true;
       ptr->snaps.memory = true;
       ptr->snaps.operation = true;
+      ptr->snaps.callstack = true;
     }
 
     if (args->snaps__internal->count > 0) {
@@ -32,6 +33,11 @@ vm__opts_t *vm__opts_create(vm__cli_args_t *args) {
     if (args->snaps__operation->count > 0) {
       ptr->snaps.operation = true;
     }
+
+    if (args->snaps__callstack->count > 0) {
+      ptr->snaps.callstack = true;
+    }
+
   }
 
   return ptr;
@@ -42,6 +48,7 @@ vm__opts_snaps_t vm__opts_snaps_init() {
   ptr.internal = false;
   ptr.memory = false;
   ptr.operation = false;
+  ptr.callstack = false;
   return ptr;
 }
 
