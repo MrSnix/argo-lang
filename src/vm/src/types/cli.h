@@ -28,9 +28,6 @@ typedef struct {
 } vm__cli_cmm_t;
 
 typedef struct {
-  char *name;
-  char *exe_name;
-  char *version;
   vm__cli_args_t *vm;
   vm__cli_cmm_t *common;
   void *table[CLI_ARGS];

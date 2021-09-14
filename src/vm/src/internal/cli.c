@@ -7,10 +7,6 @@
 vm__cli_t *vm__cli_create(int argc, char *argv[]) {
   vm__cli_t *args = (vm__cli_t *)malloc(sizeof(vm__cli_t));
 
-  args->name = CLI_NAME;
-  args->exe_name = CLI_EXE_NAME;
-  args->version = CLI_VERSION;
-
   args->vm = (vm__cli_args_t *)malloc(sizeof(vm__cli_args_t));
 
   args->vm->in = arg_filen(NULL, NULL, "<file>", 1, 100, "Input file(s)"),
@@ -63,14 +59,14 @@ int vm__cli_free(vm__cli_t **args) {
 }
 
 void vm__cli_help(vm__cli_t *args) {
-  printf("Usage: %s", args->exe_name);
+  printf("Usage: %s", CLI_EXE_NAME);
   arg_print_syntax(stdout, args->table, "\n");
   arg_print_glossary(stdout, args->table, "  %-50s %s\n");
   args->status = OK_CLI_EXIT;
 }
 
 void vm__cli_version(vm__cli_t *args) {
-  printf("%s %s\n", args->name, args->version);
+  printf("%s %s\n", CLI_NAME, CLI_VERSION);
   args->status = OK_CLI_EXIT;
 }
 
