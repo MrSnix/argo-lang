@@ -1,3 +1,6 @@
 /build
 /tools/out
-/src/assembler/.antlr
+/src/assembler/src/main/resources/.antlr
+/src/assembler/.idea
+/src/assembler/target
+/src/assembler/assembler.iml
