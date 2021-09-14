@@ -5,9 +5,9 @@
 #include <stdlib.h>
 
 vm__cli_t *vm__cli_create(int argc, char *argv[]) {
-  vm__cli_t *args = (vm__cli_t *)malloc(sizeof(vm__cli_t));
+  vm__cli_t *args = malloc(sizeof(vm__cli_t));
 
-  args->vm = (vm__cli_args_t *)malloc(sizeof(vm__cli_args_t));
+  args->vm = malloc(sizeof(vm__cli_args_t));
 
   args->vm->in = arg_filen(NULL, NULL, "<file>", 1, 100, "Input file(s)"),
 

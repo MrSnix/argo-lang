@@ -5,7 +5,7 @@
 
 vm__bc_t *vm__bc_create(vm__bc_version_t version, uint16_t routines_size,
                         vm__bc_routine_t *routines[]) {
-  vm__bc_t *ptr = (vm__bc_t *)malloc(sizeof(vm__bc_t) +
+  vm__bc_t *ptr = malloc(sizeof(vm__bc_t) +
                                      sizeof(vm__bc_routine_t *[routines_size]));
   ptr->version = version;
   ptr->routines_size = routines_size;
@@ -16,7 +16,7 @@ vm__bc_t *vm__bc_create(vm__bc_version_t version, uint16_t routines_size,
 
 vm__bc_routine_t *vm__routine_create(uint16_t id, const char *name,
                                      uint32_t data_size, int32_t *data) {
-  vm__bc_routine_t *ptr = (vm__bc_routine_t *)malloc(sizeof(vm__bc_routine_t));
+  vm__bc_routine_t *ptr = malloc(sizeof(vm__bc_routine_t));
   ptr->id = id;
   ptr->ip = 0;
   ptr->name = name;

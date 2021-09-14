@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 vm__opts_t *vm__opts_create(vm__cli_args_t *args) {
-  vm__opts_t *ptr = (vm__opts_t *)malloc(sizeof(vm__opts_t));
+  vm__opts_t *ptr = malloc(sizeof(vm__opts_t));
 
   ptr->in = NULL;
   ptr->snaps = vm__opts_snaps_init();
@@ -54,9 +54,9 @@ vm__opts_dbg_t *vm__opts_dbg_create(unsigned int size) {
   vm__opts_dbg_t *ptr = NULL;
 
   if (size) {
-    vm__opts_dbg_t *ptr = (vm__opts_dbg_t *)malloc(sizeof(vm__opts_dbg_t));
+    vm__opts_dbg_t *ptr = malloc(sizeof(vm__opts_dbg_t));
     ptr->size = size;
-    ptr->breakpoints = (unsigned int *)malloc(sizeof(unsigned int) * size);
+    ptr->breakpoints = malloc(sizeof(unsigned int) * size);
   }
 
   return ptr;

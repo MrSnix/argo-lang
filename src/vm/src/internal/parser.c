@@ -10,7 +10,7 @@
 
 vm__op_t *vm__op_create(vm__code_t id, char *name, uint32_t ip,
                         uint8_t args_size) {
-  vm__op_t *op = (vm__op_t *)malloc(sizeof(vm__op_t));
+  vm__op_t *op = malloc(sizeof(vm__op_t));
 
   op->id = id;
   op->name = name;

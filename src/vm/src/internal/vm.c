@@ -12,7 +12,7 @@
 #include "../types/isa/operation.h"
 
 static vm_t *vm__init(vm__bc_t *bc) {
-  vm_t *vm = (vm_t *)malloc(sizeof(vm_t));
+  vm_t *vm = malloc(sizeof(vm_t));
 
   vm->running = false;
   vm->bc = bc;
