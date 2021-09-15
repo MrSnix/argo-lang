@@ -66,7 +66,7 @@ void vm__cli_help(vm__cli_t *args) {
 }
 
 void vm__cli_version(vm__cli_t *args) {
-  printf("%s %s\n", CLI_NAME, CLI_VERSION);
+  printf("%s(%s) v%s\n", CLI_NAME, CLI_EXE_NAME, CLI_VERSION);
   args->status = OK_CLI_EXIT;
 }
 
