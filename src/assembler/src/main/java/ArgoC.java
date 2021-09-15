@@ -81,7 +81,7 @@ public final class ArgoC {
 		// Eventually display output
 		if(args.isDebug()) System.out.println(classFile);
 		// Write on disk
-		ArgoWriter.write(classFile, args.getNamedOutput(filename));
+		new ArgoWriter(classFile).write(args.getNamedOutput(filename));
 	}
 
 }
