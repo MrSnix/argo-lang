@@ -3,6 +3,9 @@ package bytecode;
 import java.util.HashMap;
 
 public final class ClassFile {
+
+	public static final String EXT = "argoc";
+
 	private final int majorVersion;
 	private final int minorVersion;
 	private final HashMap<String, Routine> routinesTable;
