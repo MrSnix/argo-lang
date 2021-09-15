@@ -9,13 +9,13 @@
 #
 
 :sum {
-    ADD,
+    ADD
     RET
 }
 
 :main {
-    PSH, 5, 
-    PSH, 4, 
-    CLL, sum, 
+    PSH, 5
+    PSH, 4 
+    CLL, sum 
     HLT
 }

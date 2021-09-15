@@ -3,7 +3,9 @@
 # int res = 5 + 4;
 #
 
-PSH, 5,
-PSH, 4, 
-ADD,
-HLT
+:main {
+  PSH, 5
+  PSH, 4 
+  ADD
+  HLT
+}

@@ -6,11 +6,13 @@
 # }
 #
 
-PSH, 1,
-PSH, 1,
-ADD,
-PSH, 100, 
-CMP,
-POP,
-JML, 2,
-HLT
+:main {
+  PSH, 1
+  PSH, 1
+  ADD
+  PSH, 100 
+  CMP
+  POP
+  JML, 2
+  HLT
+}
