@@ -16,6 +16,33 @@ public class Generator extends ArgoBaseVisitor<ClassFile> {
 	}
 
 	@Override
+	public ClassFile visitArgument(ArgoParser.ArgumentContext ctx) {
+		// Get routine name
+		final String name = ((ArgoParser.RoutineContext) ctx.parent.parent).label().name().getText();
+		// Get instruction
+		final String instruction = ((ArgoParser.InstructionContext) ctx.parent).opcode().getText();
+		// Get routine data
+		final Routine routine = this.classFile.getRoutinesTable().get(name);
+		// Verify special case
+		if(Opcode.valueOf(instruction) == Opcode.CLL) {
+			// We need to translate identifier to address
+			// FIXME This will only work if call order is respected
+			final String callee = ctx.name().getText();
+			// This must be fixed
+			if(this.classFile.getRoutinesTable().containsKey(callee)){
+				routine.getData().add(this.classFile.getRoutinesTable().get(callee).getId());
+			}else{
+				throw new RuntimeException("Unable to link unsorted call order (for now...)");
+			}
+		}else {
+			// Add value
+			routine.getData().add(Integer.parseInt(ctx.number().getText()));
+		}
+		// Keep going
+		return super.visitArgument(ctx);
+	}
+
+	@Override
 	public ClassFile visitInstruction(ArgoParser.InstructionContext ctx) {
 		// Get routine name
 		final String name = ((ArgoParser.RoutineContext) ctx.parent).label().name().getText();
@@ -25,18 +52,6 @@ public class Generator extends ArgoBaseVisitor<ClassFile> {
 		final String instruction = ctx.opcode().getText();
 		// Parse opcode and insert
 		routine.getData().add(Opcode.mapToBytecode(instruction));
-		// Verify special case
-		if(Opcode.valueOf(instruction) == Opcode.CLL) {
-			// We need to translate identifier to address
-			// FIXME This will only work if call order is respected
-			final String callee = ctx.argument().getText();
-			// This must be fixed
-			if(this.classFile.getRoutinesTable().containsKey(callee)){
-				routine.getData().add(this.classFile.getRoutinesTable().get(callee).getId());
-			}else{
-				throw new RuntimeException("Unable to link unsorted call order (for now...)");
-			}
-		}
 		// Keep going
 		return super.visitInstruction(ctx);
 	}
