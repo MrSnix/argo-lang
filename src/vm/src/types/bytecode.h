@@ -10,10 +10,11 @@ typedef struct {
 
 typedef struct {
   uint16_t id;
+  uint8_t name_size;
   const char *name;
-  uint32_t ip;
-  int32_t *data;
   uint32_t data_size;
+  int32_t *data;
+  uint32_t ip;
   uint16_t caller;
 } vm__bc_routine_t;
 
