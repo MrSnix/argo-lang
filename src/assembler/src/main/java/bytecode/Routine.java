@@ -2,7 +2,7 @@ package bytecode;
 
 import java.util.LinkedList;
 
-public final class Routine {
+public final class Routine implements Comparable<Routine>{
 
 	private static final String MAIN = "main";
 
@@ -37,5 +37,10 @@ public final class Routine {
 				", name='" + name + '\'' +
 				", data=" + data +
 				'}';
+	}
+
+	@Override
+	public int compareTo(Routine o) {
+		return Integer.compare(id, o.id);
 	}
 }
