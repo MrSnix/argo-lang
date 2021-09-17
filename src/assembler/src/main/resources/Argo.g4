@@ -48,7 +48,7 @@ comment
    ;
 
 OPCODE
-   : (H L T) | (N O P) | (P S H) | (P O P) | (A D D) | (S U B) | (M U L) | (D I V) | (J M P) | (J M E) | (J M N) | (J M G) | (J M L) | (C M P) | (C L L) | (R E T)
+   : (H L T) | (N O P) | (P S H) | (P O P) | (A D D) | (S U B) | (M U L) | (D I V) | (J M P) | (J M E) | (J M N) | (J M G) | (J M L) | (C M P) | (C L L) | (R E T) | (P R I N T)
    ;
 
 ARG_SEP
