@@ -17,7 +17,8 @@ public enum Opcode {
 	JML,
 	CMP,
 	CLL,
-	RET;
+	RET,
+	PRINT;
 
 	static int mapToBytecode(String code) {
 		return Opcode.valueOf(code).ordinal();
