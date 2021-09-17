@@ -52,11 +52,6 @@ vm__opts_snaps_t vm__opts_snaps_init() {
   return ptr;
 }
 
-void vm__opts_snaps_free(vm__opts_snaps_t **snaps) {
-  free(*snaps);
-  *snaps = NULL;
-}
-
 vm__opts_dbg_t *vm__opts_dbg_create(unsigned int size) {
   vm__opts_dbg_t *ptr = NULL;
 
