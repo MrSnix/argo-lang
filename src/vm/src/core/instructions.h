@@ -18,5 +18,6 @@ bool vm__exc_jmg(vm_t *vm);
 bool vm__exc_jml(vm_t *vm);
 void vm__exc_cmp(vm_t *vm);
 bool vm__exc_cll(vm_t *vm);
+void vm__exc_print(vm_t *vm);
 
 #endif

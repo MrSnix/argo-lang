@@ -18,6 +18,7 @@ typedef enum {
   NOP_ARGS = 0,
   CLL_ARGS = 1,
   RET_ARGS = 1,
+  PRINT_ARGS = 1,
 } vm__code_args_t;
 
 typedef enum {
@@ -37,6 +38,7 @@ typedef enum {
   CMP,
   CLL,
   RET,
+  PRINT,
 } vm__code_t;
 
 #endif

@@ -4,6 +4,8 @@
 #include "../core/runtime.h"
 #include "../core/stack.h"
 
+#include <stdio.h>
+
 bool vm__exc_hlt(vm_t *vm) {
   vm->running = false;
   return false;
@@ -121,4 +123,8 @@ bool vm__exc_cll(vm_t *vm) {
   // Do not increase ip now, we just switched
   // we have to execute the zero instruction
   return false;
+}
+
+void vm__exc_print(vm_t *vm) {
+  printf("%d\n", vm->op->args[0].value);
 }

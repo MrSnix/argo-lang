@@ -57,6 +57,9 @@ void vm__decode(vm_t *vm, int32_t instr) {
     case RET:
       vm__dec_ret(vm);
       break;
+    case PRINT:
+      vm__dec_print(vm);
+      break;      
     default:
       printf("Cannot decode unknown instruction: %d", instr);
       break;
@@ -113,6 +116,9 @@ void vm__execute(vm_t *vm) {
       break;
     case RET:
       increase_ip = vm__exc_ret(vm);
+      break;
+    case PRINT:
+      vm__exc_print(vm);
       break;
     default:
       printf("Cannot execute instruction: %d", vm->op->id);

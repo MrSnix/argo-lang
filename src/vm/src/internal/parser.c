@@ -208,3 +208,13 @@ void vm__dec_cll(vm_t *vm) {
 
   vm->op = op;
 }
+
+void vm__dec_print(vm_t *vm) {
+  vm__op_t *op = vm__op_create(PRINT, "PRINT", vm->bc->main->ip, PRINT_ARGS);
+
+  op->args[0].name = "VALUE";
+  op->args[0].value = vm__stack_peek(vm->stack, vm->stack->offset);
+  op->args[0].addr = vm__stack_size(vm->stack);
+  
+  vm->op = op;
+}
