@@ -7,10 +7,10 @@
 int main(int argc, char *argv[]) {
   // Parse command line
   vm__cli_t *cli = vm__cli(argc, argv);
-  // Convert to compatible vm options interface
-  vm__opts_t *opts = vm__opts_create(cli->vm);
   // Execute with given args
-  if (opts->in != NULL) {
+  if (cli->vm->in->count > 0) {
+    // Convert to compatible vm options interface
+    vm__opts_t *opts = vm__opts_create(cli->vm);
     // Read input
     vm__bc_t *bc = vm__bc_read(opts->in);
     // Create vm
