@@ -1,6 +1,7 @@
 package bytecode;
 
 import java.util.HashMap;
+import java.util.TreeSet;
 
 public final class ClassFile {
 
@@ -26,6 +27,10 @@ public final class ClassFile {
 
 	public HashMap<String, Routine> getRoutinesTable() {
 		return routinesTable;
+	}
+
+	public TreeSet<Routine> getRoutines() {
+		return new TreeSet<>(routinesTable.values());
 	}
 
 	@Override
