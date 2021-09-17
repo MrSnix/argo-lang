@@ -5,4 +5,4 @@
 /src/assembler/target
 /src/assembler/assembler.iml
 
-*.argo
+*.argoc
