@@ -6,3 +6,4 @@
 /src/assembler/assembler.iml
 
 *.argoc
+.DS_Store
