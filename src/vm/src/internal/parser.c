@@ -107,7 +107,6 @@ void vm__dec_mul(vm_t *vm) {
 
   op->args[0].name = "MUL0";
   op->args[0].value = vm__stack_pop(vm->stack);
-  ;
   op->args[0].addr = vm__stack_size(vm->stack);
 
   op->args[1].name = "MUL1";
