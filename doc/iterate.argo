@@ -1,18 +1,20 @@
 # The following .argo equals to this code:
-#
-# int res = 1;
-# while(res < 100){
-#   res = res + 1;
+# 
+# function main() {
+#   for(int i = 0; i <= 100; ++i) {
+#     print(i); 
+#   }
 # }
 #
 
 :main {
   PSH, 1
+  PRINT
   PSH, 1
   ADD
   PSH, 100 
   CMP
   POP
-  JML, 2
+  JEL, 2
   HLT
 }
