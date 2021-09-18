@@ -11,7 +11,7 @@ typedef struct {
 typedef struct {
   uint16_t id;
   uint8_t name_size;
-  const char *name;
+  char *name;
   uint32_t data_size;
   int32_t *data;
   uint32_t ip;
