@@ -15,6 +15,8 @@ public enum Opcode {
 	JMN,
 	JMG,
 	JML,
+	JEG,
+	JEL,
 	CMP,
 	CLL,
 	RET,
