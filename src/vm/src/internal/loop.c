@@ -45,6 +45,12 @@ void vm__decode(vm_t *vm, int32_t instr) {
     case JML:
       vm__dec_jml(vm);
       break;
+    case JEG:
+      vm__dec_jeg(vm);
+      break;
+    case JEL:
+      vm__dec_jel(vm);
+      break;
     case CMP:
       vm__dec_cmp(vm);
       break;
@@ -105,6 +111,12 @@ void vm__execute(vm_t *vm) {
       break;
     case JML:
       increase_ip = vm__exc_jml(vm);
+      break;
+    case JEG:
+      increase_ip = vm__exc_jeg(vm);
+      break;
+    case JEL:
+      increase_ip = vm__exc_jel(vm);
       break;
     case CMP:
       vm__exc_cmp(vm);

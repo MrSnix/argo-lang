@@ -101,6 +101,26 @@ bool vm__exc_jml(vm_t *vm) {
   return !cmp;
 }
 
+bool vm__exc_jeg(vm_t *vm) {
+  bool cmp = vm->cmp == GREATER || vm->cmp == EQUALS;
+
+  if (cmp) {
+    vm__set_ip(vm, vm->op->args[0].value);
+  }
+
+  return !cmp;
+}
+
+bool vm__exc_jel(vm_t *vm) {
+  bool cmp = vm->cmp == LESSER || vm->cmp == EQUALS;
+
+  if (cmp) {
+    vm__set_ip(vm, vm->op->args[0].value);
+  }
+
+  return !cmp;
+}
+
 void vm__exc_cmp(vm_t *vm) {
   if (vm->op->args[1].value > vm->op->args[0].value) {
     vm->cmp = GREATER;

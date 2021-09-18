@@ -24,6 +24,8 @@ void vm__dec_jme(vm_t *vm);
 void vm__dec_jmn(vm_t *vm);
 void vm__dec_jmg(vm_t *vm);
 void vm__dec_jml(vm_t *vm);
+void vm__dec_jeg(vm_t *vm);
+void vm__dec_jel(vm_t *vm);
 void vm__dec_nop(vm_t *vm);
 void vm__dec_cmp(vm_t *vm);
 void vm__dec_cll(vm_t *vm);

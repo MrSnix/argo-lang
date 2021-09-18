@@ -180,6 +180,26 @@ void vm__dec_jml(vm_t *vm) {
   vm->op = op;
 }
 
+void vm__dec_jeg(vm_t *vm) {
+  vm__op_t *op = vm__op_create(JEG, "JEG", vm->bc->main->ip, JEG_ARGS);
+
+  op->args[0].name = "VALUE";
+  op->args[0].value = vm__fetch_next(vm);
+  op->args[0].addr = vm__current_ip(vm);
+
+  vm->op = op;
+}
+
+void vm__dec_jel(vm_t *vm) {
+  vm__op_t *op = vm__op_create(JEL, "JEL", vm->bc->main->ip, JEL_ARGS);
+
+  op->args[0].name = "VALUE";
+  op->args[0].value = vm__fetch_next(vm);
+  op->args[0].addr = vm__current_ip(vm);
+
+  vm->op = op;
+}
+
 void vm__dec_nop(vm_t *vm) {
   vm->op = vm__op_create(NOP, "NOP", vm->bc->main->ip, NOP_ARGS);
 }
