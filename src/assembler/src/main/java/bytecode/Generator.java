@@ -25,15 +25,12 @@ public class Generator extends ArgoBaseVisitor<ClassFile> {
 		final Routine routine = this.classFile.getRoutinesTable().get(name);
 		// Verify special case
 		if(Opcode.valueOf(instruction) == Opcode.CLL) {
-			// We need to translate identifier to address
-			// FIXME This will only work if call order is respected
+			// We need to translate identifier to address CLL instruction
 			final String callee = ctx.name().getText();
-			// This must be fixed
-			if(this.classFile.getRoutinesTable().containsKey(callee)){
-				routine.getData().add(this.classFile.getRoutinesTable().get(callee).getId());
-			}else{
-				throw new RuntimeException("Unable to link unsorted call order (for now...)");
-			}
+			// Check for existence and add if necessary
+			this.classFile.initRoutineIfAbsent(callee);
+			// Add identifier
+			routine.getData().add(this.classFile.getRoutinesTable().get(callee).getId());
 		}else {
 			// Add value
 			routine.getData().add(Integer.parseInt(ctx.number().getText()));
@@ -60,10 +57,8 @@ public class Generator extends ArgoBaseVisitor<ClassFile> {
 	public ClassFile visitRoutine(ArgoParser.RoutineContext ctx) {
 		// Identify routine name
 		final String name = ctx.label().name().getText();
-		// Create routine
-		final Routine routine = new Routine(name);
 		// Insert into mapper
-		this.classFile.getRoutinesTable().put(name, routine);
+		this.classFile.initRoutineIfAbsent(name);
 		// Keep going
 		return super.visitRoutine(ctx);
 	}

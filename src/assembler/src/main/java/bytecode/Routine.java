@@ -13,7 +13,7 @@ public final class Routine implements Comparable<Routine>{
 	private final LinkedList<Integer> data;
 
 	public Routine(String name) {
-		this.id = name.equals(MAIN) ? 0 : ID++;
+		this.id = name.equalsIgnoreCase(MAIN) ? 0 : Routine.ID++;
 		this.name = name;
 		this.data = new LinkedList<>();
 	}

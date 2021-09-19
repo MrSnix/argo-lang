@@ -17,6 +17,12 @@ public final class ClassFile {
 		this.routinesTable = new HashMap<>();
 	}
 
+	public void initRoutineIfAbsent(String name){
+		if(!routinesTable.containsKey(name)){
+			routinesTable.put(name, new Routine(name));
+		}
+	}
+
 	public int getMajorVersion() {
 		return majorVersion;
 	}
@@ -26,7 +32,7 @@ public final class ClassFile {
 	}
 
 	public HashMap<String, Routine> getRoutinesTable() {
-		return routinesTable;
+		return new HashMap<>(routinesTable);
 	}
 
 	public TreeSet<Routine> getRoutines() {
