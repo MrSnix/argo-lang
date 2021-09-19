@@ -4,7 +4,8 @@
 #   return a + b;
 # }
 # function main() {
-#   return sum(5, 4);
+#   print(sum(5, 4));
+#   return;
 # }
 #
 
