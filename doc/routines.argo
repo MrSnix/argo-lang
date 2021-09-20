@@ -17,5 +17,6 @@
     PSH, 5
     PSH, 4 
     CLL, sum 
+    PRINT
     HLT
 }
