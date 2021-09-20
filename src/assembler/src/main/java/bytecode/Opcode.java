@@ -9,6 +9,7 @@ public enum Opcode {
   SUB,
   MUL,
   DIV,
+  NEG,
   JMP,
   JEQ,
   JNE,
