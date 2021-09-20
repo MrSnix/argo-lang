@@ -1,6 +1,6 @@
 # The following .argo equals to this code:
 # 
-# function sum(int a, int b) {
+# function sum(var a, var b) {
 #   return a + b;
 # }
 # function main() {

@@ -1,6 +1,6 @@
 # The following .argo equals to this code:
 #
-# int res = 1;
+# var res = 1;
 # while(true) {
 #   res = res + 1;
 # }

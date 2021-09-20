@@ -1,7 +1,7 @@
 # The following .argo equals to this code:
 # 
 # function main() {
-#   for(int i = 0; i <= 100; ++i) {
+#   for(var i = 0; i <= 100; ++i) {
 #     print(i); 
 #   }
 # }

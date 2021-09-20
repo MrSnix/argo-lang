@@ -1,6 +1,6 @@
 # The following .argo equals to this code:
 #
-# int res = 5 + 4;
+# var res = 5 + 4;
 #
 
 :main {
