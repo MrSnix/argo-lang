@@ -1,10 +1,15 @@
 # The following .argo equals to this code:
 # 
+# function printer(var x){
+#   print(x);
+# }
+#
 # function sum(var a, var b) {
 #   return a + b;
 # }
+#
 # function main() {
-#   print(sum(5, 4));
+#   printer(sum(5, 4));
 #   return;
 # }
 #
