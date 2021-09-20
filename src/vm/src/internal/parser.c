@@ -150,8 +150,8 @@ void vm__dec_jeq(vm_t *vm) {
   vm->op = op;
 }
 
-void vm__dec_jmn(vm_t *vm) {
-  vm__op_t *op = vm__op_create(JMN, "JMN", vm->bc->main->ip, JMP_ARGS);
+void vm__dec_jne(vm_t *vm) {
+  vm__op_t *op = vm__op_create(JNE, "JNE", vm->bc->main->ip, JMP_ARGS);
 
   op->args[0].name = "VALUE";
   op->args[0].value = vm__fetch_next(vm);

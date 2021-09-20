@@ -11,7 +11,7 @@ public enum Opcode {
   DIV,
   JMP,
   JEQ,
-  JMN,
+  JNE,
   JMG,
   JML,
   JGE,

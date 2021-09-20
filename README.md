@@ -19,7 +19,7 @@ It runs the file provided by ArgoC (Argo Compiler) which transform the _argo-lan
 | CMP   | CMP         | Peeks the last two values from the stack, then set the CMP register to one of these values: (EQUALS, LESSER, GREATER) |
 | JMP   | JMP, idx    | Jumps at given instruction index                                                                                      |
 | JEQ   | JEQ, idx    | Jumps at given instruction index only if the CMP flag is set to EQUALS                                                |
-| JMN   | JMN, idx    | Jumps at given instruction index only if the CMP flag is NOT set to EQUALS                                            |
+| JNE   | JNE, idx    | Jumps at given instruction index only if the CMP flag is NOT set to EQUALS                                            |
 | JMG   | JMG, idx    | Jumps at given instruction index only if the CMP flag is set to GREATER                                               |
 | JML   | JML, idx    | Jumps at given instruction index only if the CMP flag is set to LESSER                                                |
 | JGE   | JGE, idx    | Jumps at given instruction index only if the CMP flag is set to EQUALS or GREATER                                     |
