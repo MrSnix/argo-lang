@@ -6,8 +6,6 @@ It runs the file provided by ArgoC (Argo Compiler) which transform the _argo-lan
 
 ### Instruction Set
 
-
-
 |  OP   |     Usage     |                                          Function                                          |
 |-------|---------------|--------------------------------------------------------------------------------------------|
 | HLT   | HLT           | Terminate the program                                                                      |
