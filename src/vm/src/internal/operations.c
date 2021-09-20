@@ -111,7 +111,7 @@ bool vm__exc_jge(vm_t *vm) {
   return !cmp;
 }
 
-bool vm__exc_jel(vm_t *vm) {
+bool vm__exc_jle(vm_t *vm) {
   bool cmp = vm->cmp == LESSER || vm->cmp == EQUALS;
 
   if (cmp) {

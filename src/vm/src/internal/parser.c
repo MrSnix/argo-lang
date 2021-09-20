@@ -190,8 +190,8 @@ void vm__dec_jge(vm_t *vm) {
   vm->op = op;
 }
 
-void vm__dec_jel(vm_t *vm) {
-  vm__op_t *op = vm__op_create(JEL, "JEL", vm->bc->main->ip, JEL_ARGS);
+void vm__dec_jle(vm_t *vm) {
+  vm__op_t *op = vm__op_create(JLE, "JLE", vm->bc->main->ip, JLE_ARGS);
 
   op->args[0].name = "VALUE";
   op->args[0].value = vm__fetch_next(vm);

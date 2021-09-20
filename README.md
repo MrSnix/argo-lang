@@ -23,7 +23,7 @@ It runs the file provided by ArgoC (Argo Compiler) which transform the _argo-lan
 | JMG   | JMG, idx    | Jumps at given instruction index only if the CMP flag is set to GREATER                                               |
 | JML   | JML, idx    | Jumps at given instruction index only if the CMP flag is set to LESSER                                                |
 | JGE   | JGE, idx    | Jumps at given instruction index only if the CMP flag is set to EQUALS or GREATER                                     |
-| JEL   | JEL, idx    | Jumps at given instruction index only if the CMP flag is set to EQUALS or LESSER                                      |
+| JLE   | JLE, idx    | Jumps at given instruction index only if the CMP flag is set to EQUALS or LESSER                                      |
 | CLL   | CLL, idx    | Executes the given routine identifier                                                                                 |
 | RET   | RET         | Routine specific instruction, it's used to terminate the current routine flow                                         |
 | PRINT | PRINT       | Peeks the last value from the stack and print it.                                                                     |
@@ -68,7 +68,7 @@ You can reproduce any conditional-structure you like with the following instruct
   PSH, 100 
   CMP
   POP
-  JEL, 2
+  JLE, 2
   HLT
 }
 ```

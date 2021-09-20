@@ -15,6 +15,6 @@
   PSH, 100 
   CMP
   POP
-  JEL, 2
+  JLE, 2
   HLT
 }
