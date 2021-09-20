@@ -17,7 +17,7 @@ MunitResult vm__dec_sub_test();
 MunitResult vm__dec_mul_test();
 MunitResult vm__dec_div_test();
 MunitResult vm__dec_jmp_test();
-MunitResult vm__dec_jme_test();
+MunitResult vm__dec_jeq_test();
 MunitResult vm__dec_jmn_test();
 MunitResult vm__dec_jmg_test();
 MunitResult vm__dec_jml_test();

@@ -33,8 +33,8 @@ void vm__decode(vm_t *vm, int32_t instr) {
     case JMP:
       vm__dec_jmp(vm);
       break;
-    case JME:
-      vm__dec_jme(vm);
+    case JEQ:
+      vm__dec_jeq(vm);
       break;
     case JMN:
       vm__dec_jmn(vm);
@@ -100,8 +100,8 @@ void vm__execute(vm_t *vm) {
     case JMP:
       increase_ip = vm__exc_jmp(vm);
       break;
-    case JME:
-      increase_ip = vm__exc_jme(vm);
+    case JEQ:
+      increase_ip = vm__exc_jeq(vm);
       break;
     case JMN:
       increase_ip = vm__exc_jmn(vm);

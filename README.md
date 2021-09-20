@@ -18,7 +18,7 @@ It runs the file provided by ArgoC (Argo Compiler) which transform the _argo-lan
 | DIV   | DIV         | Pops the last two values from the stack, it divides then push the results (value and rest)                            |
 | CMP   | CMP         | Peeks the last two values from the stack, then set the CMP register to one of these values: (EQUALS, LESSER, GREATER) |
 | JMP   | JMP, idx    | Jumps at given instruction index                                                                                      |
-| JME   | JME, idx    | Jumps at given instruction index only if the CMP flag is set to EQUALS                                                |
+| JEQ   | JEQ, idx    | Jumps at given instruction index only if the CMP flag is set to EQUALS                                                |
 | JMN   | JMN, idx    | Jumps at given instruction index only if the CMP flag is NOT set to EQUALS                                            |
 | JMG   | JMG, idx    | Jumps at given instruction index only if the CMP flag is set to GREATER                                               |
 | JML   | JML, idx    | Jumps at given instruction index only if the CMP flag is set to LESSER                                                |

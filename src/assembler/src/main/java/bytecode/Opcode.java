@@ -10,7 +10,7 @@ public enum Opcode {
   MUL,
   DIV,
   JMP,
-  JME,
+  JEQ,
   JMN,
   JMG,
   JML,

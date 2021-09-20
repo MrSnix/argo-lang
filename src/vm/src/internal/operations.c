@@ -61,7 +61,7 @@ bool vm__exc_jmp(vm_t *vm) {
   return false;
 }
 
-bool vm__exc_jme(vm_t *vm) {
+bool vm__exc_jeq(vm_t *vm) {
   bool cmp = vm->cmp == EQUALS;
 
   if (cmp) {
