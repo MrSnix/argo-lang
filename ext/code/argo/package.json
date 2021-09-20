@@ -1,0 +1,25 @@
+{
+    "name": "argo",
+    "displayName": "Argo",
+    "description": "The Argo Programming Language for the ArgoVM",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.60.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "argo",
+            "aliases": ["Argo", "argo"],
+            "extensions": [".argo"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "argo",
+            "scopeName": "source.argo",
+            "path": "./syntaxes/argo.tmLanguage.json"
+        }]
+    }
+}
