@@ -27,3 +27,111 @@ It runs the file provided by ArgoC (Argo Compiler) which transform the _argo-lan
 | CLL   | CLL, idx    | Executes the given routine identifier                                                                                 |
 | RET   | RET         | Routine specific instruction, it's used to terminate the current routine flow                                         |
 | PRINT | PRINT       | Peeks the last value from the stack and print it.                                                                     |
+
+### Grammar
+
+#### Basics
+Let's see some syntax in action
+
+```
+# sum.argo
+#
+# Define the main function (entry point)
+
+:main {
+    PSH, 5
+    PSH, 4
+    ADD
+    PRINT
+    HLT
+}
+```
+#### Iteration
+
+You can reproduce any conditional-structure you like with the following instructions
+
+```
+# iterate.argo
+#
+# function main() {
+#   for(var i = 0; i <= 100; ++i) {
+#     print(i); 
+#   }
+# }
+#
+
+:main {
+  PSH, 1
+  PRINT
+  PSH, 1
+  ADD
+  PSH, 100 
+  CMP
+  POP
+  JEL, 2
+  HLT
+}
+```
+#### Routines
+
+Splitting the code workflow among other calls, arguments should be pushed on stack before calling the function meanwhile the return address is managed automatically.
+
+```
+# The following .argo equals to this code:
+# 
+# function printer(var x){
+#   print(x);
+# }
+#
+# function sum(var a, var b) {
+#   return a + b;
+# }
+#
+# function main() {
+#   printer(sum(5, 4));
+#   return;
+# }
+#
+
+:main {
+    PSH, 5
+    PSH, 4 
+    CLL, sum 
+    HLT
+}
+
+:sum {
+    ADD
+    CLL, printer
+    RET
+}
+
+:printer {
+    PRINT
+    RET
+}
+```
+
+### The workflow
+
+This is how its expected to work at the end of development:
+
+`Argonauts (Lang) -> Argo (ASM) ->  Bytecode (ArgoCode) -> ArgoVM`
+
+Currently there is no `Argonauts` lang, I'm still working on `Argo`.
+
+## Project
+
+### Structure
+
+The current ArgoVM is written in C meanwhile the compiler ArgoC is written using Java, some additionals dev-tools are made in Perl.
+
+```
+src
+|
+|-- assembler  # The ArgoC  home directory
+|-- vm         # The ArgoVM home directory
+
+```
+
+TODO ...
