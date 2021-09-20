@@ -16,6 +16,7 @@ It runs the file provided by ArgoC (Argo Compiler) which transform the _argo-lan
 | SUB   | SUB         | Pops the last two values from the stack, it subtracts then push the result                                            |
 | MUL   | MUL         | Pops the last two values from the stack, it multiplies then push the result                                           |
 | DIV   | DIV         | Pops the last two values from the stack, it divides then push the results (value and rest)                            |
+| NEG   | NEG         | Pops the last value from the stack, it negate then push the results (value and rest)                                  |
 | CMP   | CMP         | Peeks the last two values from the stack, then set the CMP register to one of these values: (EQUALS, LESSER, GREATER) |
 | JMP   | JMP, idx    | Jumps at given instruction index                                                                                      |
 | JEQ   | JEQ, idx    | Jumps at given instruction index only if the CMP flag is set to EQUALS                                                |
