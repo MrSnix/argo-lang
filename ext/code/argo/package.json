@@ -3,6 +3,7 @@
     "displayName": "Argo",
     "description": "The Argo Programming Language for the ArgoVM",
     "version": "0.0.1",
+    "publisher": "ArgoLang",
     "engines": {
         "vscode": "^1.60.0"
     },
