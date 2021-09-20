@@ -40,7 +40,7 @@ string
    ;
 
 number
-   : NUMBER
+   : SIGN? NUMBER
    ;
 
 comment
@@ -48,7 +48,25 @@ comment
    ;
 
 OPCODE
-   : (H L T) | (N O P) | (P S H) | (P O P) | (A D D) | (S U B) | (M U L) | (D I V) | (J M P) | (J M E) | (J M N) | (J M G) | (J M L) | (J E G) | (J E L) | (C M P) | (C L L) | (R E T) | (P R I N T)
+   : (H L T)
+   | (N O P)
+   | (P S H)
+   | (P O P)
+   | (A D D)
+   | (S U B)
+   | (M U L)
+   | (D I V)
+   | (J M P)
+   | (J E Q)
+   | (J N E)
+   | (J M G)
+   | (J M L)
+   | (J G E)
+   | (J L E)
+   | (C M P)
+   | (C L L)
+   | (R E T)
+   | (P R I N T)
    ;
 
 ARG_SEP
@@ -177,6 +195,10 @@ NAME
 
 NUMBER
    : [0-9]+
+   ;
+
+SIGN
+   : '+' | '-'
    ;
 
 COMMENT
