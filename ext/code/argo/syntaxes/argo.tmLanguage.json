@@ -42,7 +42,7 @@
 			"patterns": [
 				{
 					"name": "keyword.control.argo",
-					"match": "\\b(JME|JMN|JML|JMG|JEG|JEL|JMP|HLT)\\b"
+					"match": "\\b(JME|JMN|JML|JMG|JGE|JEL|JMP|HLT)\\b"
 				}
 			]
 		},

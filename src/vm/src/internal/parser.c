@@ -180,8 +180,8 @@ void vm__dec_jml(vm_t *vm) {
   vm->op = op;
 }
 
-void vm__dec_jeg(vm_t *vm) {
-  vm__op_t *op = vm__op_create(JEG, "JEG", vm->bc->main->ip, JEG_ARGS);
+void vm__dec_jge(vm_t *vm) {
+  vm__op_t *op = vm__op_create(JGE, "JGE", vm->bc->main->ip, JGE_ARGS);
 
   op->args[0].name = "VALUE";
   op->args[0].value = vm__fetch_next(vm);
@@ -234,6 +234,6 @@ void vm__dec_print(vm_t *vm) {
   op->args[0].name = "VALUE";
   op->args[0].value = vm__stack_peek(vm->stack, vm->stack->offset);
   op->args[0].addr = vm__stack_size(vm->stack);
-  
+
   vm->op = op;
 }

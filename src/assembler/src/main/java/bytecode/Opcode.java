@@ -1,29 +1,27 @@
 package bytecode;
 
 public enum Opcode {
+  HLT,
+  NOP,
+  PSH,
+  POP,
+  ADD,
+  SUB,
+  MUL,
+  DIV,
+  JMP,
+  JME,
+  JMN,
+  JMG,
+  JML,
+  JGE,
+  JEL,
+  CMP,
+  CLL,
+  RET,
+  PRINT;
 
-	HLT,
-	NOP,
-	PSH,
-	POP,
-	ADD,
-	SUB,
-	MUL,
-	DIV,
-	JMP,
-	JME,
-	JMN,
-	JMG,
-	JML,
-	JEG,
-	JEL,
-	CMP,
-	CLL,
-	RET,
-	PRINT;
-
-	static int mapToBytecode(String code) {
-		return Opcode.valueOf(code).ordinal();
-	}
-
+  static int mapToBytecode(String code) {
+    return Opcode.valueOf(code).ordinal();
+  }
 }

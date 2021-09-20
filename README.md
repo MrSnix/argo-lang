@@ -22,7 +22,7 @@ It runs the file provided by ArgoC (Argo Compiler) which transform the _argo-lan
 | JMN   | JMN, idx    | Jumps at given instruction index only if the CMP flag is NOT set to EQUALS                                            |
 | JMG   | JMG, idx    | Jumps at given instruction index only if the CMP flag is set to GREATER                                               |
 | JML   | JML, idx    | Jumps at given instruction index only if the CMP flag is set to LESSER                                                |
-| JEG   | JEG, idx    | Jumps at given instruction index only if the CMP flag is set to EQUALS or GREATER                                     |
+| JGE   | JGE, idx    | Jumps at given instruction index only if the CMP flag is set to EQUALS or GREATER                                     |
 | JEL   | JEL, idx    | Jumps at given instruction index only if the CMP flag is set to EQUALS or LESSER                                      |
 | CLL   | CLL, idx    | Executes the given routine identifier                                                                                 |
 | RET   | RET         | Routine specific instruction, it's used to terminate the current routine flow                                         |

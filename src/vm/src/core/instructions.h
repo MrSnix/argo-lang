@@ -16,7 +16,7 @@ bool vm__exc_jme(vm_t *vm);
 bool vm__exc_jmn(vm_t *vm);
 bool vm__exc_jmg(vm_t *vm);
 bool vm__exc_jml(vm_t *vm);
-bool vm__exc_jeg(vm_t *vm);
+bool vm__exc_jge(vm_t *vm);
 bool vm__exc_jel(vm_t *vm);
 void vm__exc_cmp(vm_t *vm);
 bool vm__exc_cll(vm_t *vm);
