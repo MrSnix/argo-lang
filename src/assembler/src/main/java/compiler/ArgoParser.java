@@ -1,13 +1,16 @@
 package compiler;
 
-import org.antlr.v4.runtime.atn.*;
-import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.misc.*;
-import org.antlr.v4.runtime.tree.*;
+import org.antlr.v4.runtime.atn.ATN;
+import org.antlr.v4.runtime.atn.ATNDeserializer;
+import org.antlr.v4.runtime.atn.ParserATNSimulator;
+import org.antlr.v4.runtime.atn.PredictionContextCache;
+import org.antlr.v4.runtime.dfa.DFA;
+import org.antlr.v4.runtime.tree.ParseTreeListener;
+import org.antlr.v4.runtime.tree.ParseTreeVisitor;
+import org.antlr.v4.runtime.tree.TerminalNode;
+
 import java.util.List;
-import java.util.Iterator;
-import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class ArgoParser extends Parser {
@@ -18,7 +21,7 @@ public class ArgoParser extends Parser {
 		new PredictionContextCache();
 	public static final int
 		OPCODE=1, ARG_SEP=2, ID_DECL=3, OPEN_STMT=4, CLOSE_STMT=5, NAME=6, NUMBER=7, 
-		COMMENT=8, STRING=9, EOL=10, WS=11;
+		SIGN=8, COMMENT=9, STRING=10, EOL=11, WS=12;
 	public static final int
 		RULE_prog = 0, RULE_line = 1, RULE_routine = 2, RULE_instruction = 3, 
 		RULE_label = 4, RULE_argument = 5, RULE_opcode = 6, RULE_name = 7, RULE_string = 8, 
@@ -40,7 +43,7 @@ public class ArgoParser extends Parser {
 	private static String[] makeSymbolicNames() {
 		return new String[] {
 			null, "OPCODE", "ARG_SEP", "ID_DECL", "OPEN_STMT", "CLOSE_STMT", "NAME", 
-			"NUMBER", "COMMENT", "STRING", "EOL", "WS"
+			"NUMBER", "SIGN", "COMMENT", "STRING", "EOL", "WS"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -454,6 +457,7 @@ public class ArgoParser extends Parser {
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case NUMBER:
+			case SIGN:
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(54);
@@ -617,6 +621,7 @@ public class ArgoParser extends Parser {
 
 	public static class NumberContext extends ParserRuleContext {
 		public TerminalNode NUMBER() { return getToken(ArgoParser.NUMBER, 0); }
+		public TerminalNode SIGN() { return getToken(ArgoParser.SIGN, 0); }
 		public NumberContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -639,10 +644,21 @@ public class ArgoParser extends Parser {
 	public final NumberContext number() throws RecognitionException {
 		NumberContext _localctx = new NumberContext(_ctx, getState());
 		enterRule(_localctx, 18, RULE_number);
+		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(65);
+			setState(66);
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			if (_la==SIGN) {
+				{
+				setState(65);
+				match(SIGN);
+				}
+			}
+
+			setState(68);
 			match(NUMBER);
 			}
 		}
@@ -684,7 +700,7 @@ public class ArgoParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(67);
+			setState(70);
 			match(COMMENT);
 			}
 		}
@@ -700,24 +716,24 @@ public class ArgoParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\rH\4\2\t\2\4\3\t"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\16K\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4"+
 		"\f\t\f\3\2\5\2\32\n\2\3\2\6\2\35\n\2\r\2\16\2\36\3\3\3\3\5\3#\n\3\3\4"+
 		"\3\4\3\4\3\4\3\4\3\4\6\4+\n\4\r\4\16\4,\3\4\3\4\3\5\3\5\3\5\5\5\64\n\5"+
-		"\3\6\3\6\3\6\3\7\3\7\3\7\5\7<\n\7\3\b\3\b\3\t\3\t\3\n\3\n\3\13\3\13\3"+
-		"\f\3\f\3\f\2\2\r\2\4\6\b\n\f\16\20\22\24\26\2\2\2C\2\34\3\2\2\2\4\"\3"+
-		"\2\2\2\6$\3\2\2\2\b\60\3\2\2\2\n\65\3\2\2\2\f;\3\2\2\2\16=\3\2\2\2\20"+
-		"?\3\2\2\2\22A\3\2\2\2\24C\3\2\2\2\26E\3\2\2\2\30\32\5\4\3\2\31\30\3\2"+
-		"\2\2\31\32\3\2\2\2\32\33\3\2\2\2\33\35\7\f\2\2\34\31\3\2\2\2\35\36\3\2"+
-		"\2\2\36\34\3\2\2\2\36\37\3\2\2\2\37\3\3\2\2\2 #\5\26\f\2!#\5\6\4\2\" "+
-		"\3\2\2\2\"!\3\2\2\2#\5\3\2\2\2$%\5\n\6\2%&\7\6\2\2&*\7\f\2\2\'(\5\b\5"+
-		"\2()\7\f\2\2)+\3\2\2\2*\'\3\2\2\2+,\3\2\2\2,*\3\2\2\2,-\3\2\2\2-.\3\2"+
-		"\2\2./\7\7\2\2/\7\3\2\2\2\60\63\5\16\b\2\61\62\7\4\2\2\62\64\5\f\7\2\63"+
-		"\61\3\2\2\2\63\64\3\2\2\2\64\t\3\2\2\2\65\66\7\5\2\2\66\67\5\20\t\2\67"+
-		"\13\3\2\2\28<\5\24\13\29<\5\22\n\2:<\5\20\t\2;8\3\2\2\2;9\3\2\2\2;:\3"+
-		"\2\2\2<\r\3\2\2\2=>\7\3\2\2>\17\3\2\2\2?@\7\b\2\2@\21\3\2\2\2AB\7\13\2"+
-		"\2B\23\3\2\2\2CD\7\t\2\2D\25\3\2\2\2EF\7\n\2\2F\27\3\2\2\2\b\31\36\","+
-		"\63;";
+		"\3\6\3\6\3\6\3\7\3\7\3\7\5\7<\n\7\3\b\3\b\3\t\3\t\3\n\3\n\3\13\5\13E\n"+
+		"\13\3\13\3\13\3\f\3\f\3\f\2\2\r\2\4\6\b\n\f\16\20\22\24\26\2\2\2G\2\34"+
+		"\3\2\2\2\4\"\3\2\2\2\6$\3\2\2\2\b\60\3\2\2\2\n\65\3\2\2\2\f;\3\2\2\2\16"+
+		"=\3\2\2\2\20?\3\2\2\2\22A\3\2\2\2\24D\3\2\2\2\26H\3\2\2\2\30\32\5\4\3"+
+		"\2\31\30\3\2\2\2\31\32\3\2\2\2\32\33\3\2\2\2\33\35\7\r\2\2\34\31\3\2\2"+
+		"\2\35\36\3\2\2\2\36\34\3\2\2\2\36\37\3\2\2\2\37\3\3\2\2\2 #\5\26\f\2!"+
+		"#\5\6\4\2\" \3\2\2\2\"!\3\2\2\2#\5\3\2\2\2$%\5\n\6\2%&\7\6\2\2&*\7\r\2"+
+		"\2\'(\5\b\5\2()\7\r\2\2)+\3\2\2\2*\'\3\2\2\2+,\3\2\2\2,*\3\2\2\2,-\3\2"+
+		"\2\2-.\3\2\2\2./\7\7\2\2/\7\3\2\2\2\60\63\5\16\b\2\61\62\7\4\2\2\62\64"+
+		"\5\f\7\2\63\61\3\2\2\2\63\64\3\2\2\2\64\t\3\2\2\2\65\66\7\5\2\2\66\67"+
+		"\5\20\t\2\67\13\3\2\2\28<\5\24\13\29<\5\22\n\2:<\5\20\t\2;8\3\2\2\2;9"+
+		"\3\2\2\2;:\3\2\2\2<\r\3\2\2\2=>\7\3\2\2>\17\3\2\2\2?@\7\b\2\2@\21\3\2"+
+		"\2\2AB\7\f\2\2B\23\3\2\2\2CE\7\n\2\2DC\3\2\2\2DE\3\2\2\2EF\3\2\2\2FG\7"+
+		"\t\2\2G\25\3\2\2\2HI\7\13\2\2I\27\3\2\2\2\t\31\36\",\63;D";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
