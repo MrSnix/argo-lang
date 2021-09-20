@@ -130,6 +130,16 @@ void vm__dec_div(vm_t *vm) {
   vm->op = op;
 }
 
+void vm__dec_neg(vm_t *vm) {
+  vm__op_t *op = vm__op_create(NEG, "NEG", vm->bc->main->ip, NEG_ARGS);
+
+  op->args[0].name = "VALUE";
+  op->args[0].value = vm__stack_pop(vm->stack);
+  op->args[0].addr = vm__stack_size(vm->stack);
+
+  vm->op = op;
+}
+
 void vm__dec_jmp(vm_t *vm) {
   vm__op_t *op = vm__op_create(JMP, "JMP", vm->bc->main->ip, JMP_ARGS);
 

@@ -30,6 +30,9 @@ void vm__decode(vm_t *vm, int32_t instr) {
     case DIV:
       vm__dec_div(vm);
       break;
+    case NEG:
+      vm__dec_neg(vm);
+      break;
     case JMP:
       vm__dec_jmp(vm);
       break;
@@ -96,6 +99,9 @@ void vm__execute(vm_t *vm) {
       break;
     case DIV:
       vm__exc_div(vm);
+      break;
+    case NEG:
+      vm__exc_neg(vm);
       break;
     case JMP:
       increase_ip = vm__exc_jmp(vm);

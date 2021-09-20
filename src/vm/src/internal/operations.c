@@ -55,6 +55,13 @@ void vm__exc_div(vm_t *vm) {
   vm__stack_push(vm->stack, rem);
 }
 
+void vm__exc_neg(vm_t *vm) {
+  // Result
+  int32_t res = -(vm->op->args[0].value);
+  // PSH to stack
+  vm__stack_push(vm->stack, res);
+}
+
 bool vm__exc_jmp(vm_t *vm) {
   vm__set_ip(vm, vm->op->args[0].value);
   // When we jump, we don't increase

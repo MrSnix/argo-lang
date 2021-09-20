@@ -11,6 +11,7 @@ void vm__exc_add(vm_t *vm);
 void vm__exc_sub(vm_t *vm);
 void vm__exc_mul(vm_t *vm);
 void vm__exc_div(vm_t *vm);
+void vm__exc_neg(vm_t *vm);
 bool vm__exc_jmp(vm_t *vm);
 bool vm__exc_jeq(vm_t *vm);
 bool vm__exc_jne(vm_t *vm);
