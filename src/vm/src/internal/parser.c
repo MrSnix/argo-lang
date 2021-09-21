@@ -59,7 +59,7 @@ void vm__dec_psh(vm_t *vm) {
 
   op->args[0].name = "VALUE";
   op->args[0].value = vm__fetch_next(vm);
-  op->args[0].addr = vm__current_ip(vm);
+  op->args[0].addr = vm__stack_offset(vm->stack) + 1;
 
   vm->op = op;
 }
@@ -69,7 +69,7 @@ void vm__dec_pop(vm_t *vm) {
 
   op->args[0].name = "VALUE";
   op->args[0].value = vm__stack_top(vm->stack);
-  op->args[0].addr = vm__stack_size(vm->stack);
+  op->args[0].addr = vm__stack_offset(vm->stack);
 
   vm->op = op;
 }

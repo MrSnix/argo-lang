@@ -76,6 +76,7 @@ int32_t vm__stack_pop(vm__stack_t *stack) {
 
 int32_t vm__stack_size(vm__stack_t *stack) { return stack->counter; }
 int32_t vm__stack_empty(vm__stack_t *stack) { return stack->counter == 0; }
+int32_t vm__stack_offset(vm__stack_t *stack) { return stack->offset; }
 int32_t vm__stack_top(vm__stack_t *stack) { return stack->data[stack->offset]; }
 int32_t vm__stack_peek(vm__stack_t *stack, int32_t offset) {
   return stack->data[offset];

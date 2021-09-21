@@ -8,6 +8,7 @@ void vm__stack_free(vm__stack_t **stack);
 
 void vm__stack_push(vm__stack_t *stack, int32_t object);
 int32_t vm__stack_pop(vm__stack_t *stack);
+int32_t vm__stack_offset(vm__stack_t *stack);
 int32_t vm__stack_size(vm__stack_t *stack);
 int32_t vm__stack_empty(vm__stack_t *stack);
 int32_t vm__stack_peek(vm__stack_t *stack, int32_t offset);
