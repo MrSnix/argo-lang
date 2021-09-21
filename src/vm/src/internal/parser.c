@@ -141,14 +141,14 @@ void vm__dec_neg(vm_t *vm) {
 }
 
 void vm__dec_swp(vm_t *vm) {
-  vm__op_t *op = vm__op_create(SWP, "SWP", vm->bc->main->ip, CMP_ARGS);
+  vm__op_t *op = vm__op_create(SWP, "SWP", vm__current_ip(vm), SWP_ARGS);
 
   op->args[0].name = "OP0";
-  op->args[0].value = vm__stack_top(vm->stack);
+  op->args[0].value = vm__stack_pop(vm->stack);
   op->args[0].addr = vm__stack_size(vm->stack);
 
   op->args[1].name = "OP1";
-  op->args[1].value = vm__stack_peek(vm->stack, vm->stack->offset - 1);
+  op->args[1].value = vm__stack_pop(vm->stack);
   op->args[1].addr = vm__stack_size(vm->stack);
 
   vm->op = op;
