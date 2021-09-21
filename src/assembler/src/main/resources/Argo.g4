@@ -57,6 +57,7 @@ OPCODE
    | (M U L)
    | (D I V)
    | (N E G)
+   | (S W P)
    | (J M P)
    | (J E Q)
    | (J N E)
