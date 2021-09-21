@@ -15,7 +15,7 @@ vm__bc_routine_t *vm__routine_read(FILE* ptr) {
   fread (&name_size, sizeof(uint8_t), 1, ptr);
   name = malloc(name_size + 1);
   fread (name, sizeof(uint8_t) * name_size, 1, ptr);
-  name[name_size - 1] = '\0';
+  name[name_size] = '\0';
   fread (&data_size, sizeof(uint32_t), 1, ptr);
   data = malloc(sizeof(int32_t) * data_size);
   fread (data, sizeof(int32_t) * data_size, 1, ptr);
