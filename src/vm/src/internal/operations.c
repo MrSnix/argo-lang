@@ -62,6 +62,12 @@ void vm__exc_neg(vm_t *vm) {
   vm__stack_push(vm->stack, res);
 }
 
+void vm__exc_swp(vm_t *vm) {
+    // Just swap the order
+  vm__stack_push(vm->stack, vm->op->args[1].value);
+  vm__stack_push(vm->stack, vm->op->args[0].value);
+}
+
 bool vm__exc_jmp(vm_t *vm) {
   vm__set_ip(vm, vm->op->args[0].value);
   // When we jump, we don't increase
