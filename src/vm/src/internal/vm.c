@@ -40,10 +40,10 @@ void vm__run(vm_t *vm) {
     int32_t instruction = vm__fetch(vm);
     // Decode
     vm__decode(vm, instruction);
-    // Dump on request
-    vm__snaps(vm);
     // Execute
     vm__execute(vm);
+    // Dump on request
+    vm__snaps(vm);
     // Free the operation
     vm__op_free(&vm->op);
   }
