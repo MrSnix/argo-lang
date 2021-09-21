@@ -20,6 +20,7 @@ void vm__dec_sub(vm_t *vm);
 void vm__dec_mul(vm_t *vm);
 void vm__dec_div(vm_t *vm);
 void vm__dec_neg(vm_t *vm);
+void vm__dec_swp(vm_t *vm);
 void vm__dec_jmp(vm_t *vm);
 void vm__dec_jeq(vm_t *vm);
 void vm__dec_jne(vm_t *vm);
