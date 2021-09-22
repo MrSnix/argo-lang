@@ -18,7 +18,7 @@ static vm_t *vm__init(vm__bc_t *bc) {
   vm->bc = bc;
   vm->bc->main->ip = 0;
   vm->cmp = EQUALS;
-  vm->stack = vm__stack_create(STACK_DEFAULT_SIZE, STACK_1MB_SIZE);
+  vm->stack = vm__stack_create(STACK_DEFAULT_SIZE, STACK_8MB_SIZE);
   vm->op = NULL;
   vm->opts = NULL;
 

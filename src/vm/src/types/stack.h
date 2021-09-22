@@ -4,7 +4,7 @@
 #include <stdint.h>
 
 #define STACK_DEFAULT_SIZE 8
-#define STACK_1MB_SIZE 250000
+#define STACK_8MB_SIZE 2000000
 
 typedef struct {
   int32_t *data;
