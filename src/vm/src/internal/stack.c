@@ -67,7 +67,7 @@ void vm__stack_grow(vm__stack_t *stack) {
   // Increase stack size
   int32_t *tmp = malloc(sizeof(int32_t *) * stack->size);
 
-  for (uint32_t i = 0; i < stack->size - 8; i++) {
+  for (uint32_t i = 0; i < stack->size - size; i++) {
     tmp[i] = stack->data[i];
   }
 
