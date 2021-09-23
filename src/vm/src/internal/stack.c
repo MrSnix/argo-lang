@@ -36,7 +36,7 @@ void vm__stack_free(vm__stack_t **stack) {
   *stack = NULL;
 }
 
-static void vm__stack_grow(vm__stack_t *stack) {
+void vm__stack_grow(vm__stack_t *stack) {
   stack->size += 8;
   int32_t *tmp = malloc(sizeof(int32_t *) * stack->size);
 
