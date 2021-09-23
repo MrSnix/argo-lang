@@ -33,6 +33,7 @@ It runs the file provided by ArgoC (Argo Compiler) which transform the _argo-lan
 ### Grammar
 
 #### Basics
+
 Let's see some syntax in action
 
 ```

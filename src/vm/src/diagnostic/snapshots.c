@@ -24,9 +24,12 @@ void vm__snaps_callstack(vm_t *vm) {
   printf("| %-14s %-12s %-10s |\n", "TYPE", "NAME", "VALUE");
   printf("+----------------------------------------+\n");
   printf("| %-14s %-12s %-10d |\n", "(uint16_t)", "id", vm->bc->main->id);
-  printf("| %-14s %-12s %-10s |\n", "(const char*)", "name", vm->bc->main->name);
-  printf("| %-14s %-12s %-10d |\n", "(uint32_t*)", "instr_ptr", vm->bc->main->ip);
-  printf("| %-14s %-12s %-10d |\n", "(uint16_t)", "caller", vm->bc->main->caller);
+  printf("| %-14s %-12s %-10s |\n", "(const char*)", "name",
+         vm->bc->main->name);
+  printf("| %-14s %-12s %-10d |\n", "(uint32_t*)", "instr_ptr",
+         vm->bc->main->ip);
+  printf("| %-14s %-12s %-10d |\n", "(uint16_t)", "caller",
+         vm->bc->main->caller);
   printf("+----------------------------------------+\n");
 }
 

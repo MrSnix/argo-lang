@@ -37,7 +37,6 @@ vm__opts_t *vm__opts_create(vm__cli_args_t *args) {
     if (args->snaps__callstack->count > 0) {
       ptr->snaps.callstack = true;
     }
-
   }
 
   return ptr;

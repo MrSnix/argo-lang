@@ -63,7 +63,7 @@ void vm__exc_neg(vm_t *vm) {
 }
 
 void vm__exc_swp(vm_t *vm) {
-    // Just swap the order
+  // Just swap the order
   vm__stack_push(vm->stack, vm->op->args[0].value);
   vm__stack_push(vm->stack, vm->op->args[1].value);
 }
