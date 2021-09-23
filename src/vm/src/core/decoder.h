@@ -3,8 +3,7 @@
 
 #include "../types/vm.h"
 
-vm__op_t *vm__op_create(vm__code_t id, char *name, uint32_t ip,
-                        uint8_t args_size);
+vm__op_t *vm__op_create(vm__code_t id, char *name, uint32_t ip, uint8_t args_size);
 vm__op_t *vm__op_clone(vm__op_t *op);
 
 void vm__op_free(vm__op_t **op);

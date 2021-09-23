@@ -11,23 +11,16 @@ vm__cli_t *vm__cli_create(int argc, char *argv[]) {
 
   args->vm->in = arg_filen(NULL, NULL, "<file>", 1, 100, "Input file(s)"),
 
-  args->vm->snaps =
-      arg_litn("s", "snapshots", 0, 1, "Turn on run-time any snapshot logger");
-  args->vm->snaps__internal = arg_litn(
-      NULL, "sInt", 0, 1, "Turn on run-time snapshot logger (internal-only)");
-  args->vm->snaps__memory = arg_litn(
-      NULL, "sMem", 0, 1, "Turn on run-time snapshot logger (memory-only)");
-  args->vm->snaps__operation = arg_litn(
-      NULL, "sOpr", 0, 1, "Turn on run-time snapshot logger (operation-only)");
-  args->vm->snaps__callstack = arg_litn(
-      NULL, "sCll", 0, 1, "Turn on run-time snapshot logger (callstack-only)");
+  args->vm->snaps = arg_litn("s", "snapshots", 0, 1, "Turn on run-time any snapshot logger");
+  args->vm->snaps__internal = arg_litn(NULL, "sInt", 0, 1, "Turn on run-time snapshot logger (internal-only)");
+  args->vm->snaps__memory = arg_litn(NULL, "sMem", 0, 1, "Turn on run-time snapshot logger (memory-only)");
+  args->vm->snaps__operation = arg_litn(NULL, "sOpr", 0, 1, "Turn on run-time snapshot logger (operation-only)");
+  args->vm->snaps__callstack = arg_litn(NULL, "sCll", 0, 1, "Turn on run-time snapshot logger (callstack-only)");
 
-  args->vm->benchmark =
-      arg_litn("b", "benchmark", 0, 1, "Turn on run-time performance logging");
+  args->vm->benchmark = arg_litn("b", "benchmark", 0, 1, "Turn on run-time performance logging");
 
   args->help = arg_litn(NULL, "help", 0, 1, "Display this help and exit");
-  args->version =
-      arg_litn(NULL, "version", 0, 1, "Displays version information and exit");
+  args->version = arg_litn(NULL, "version", 0, 1, "Displays version information and exit");
   args->end = arg_end(CLI_ERRORS);
 
   args->table[0] = args->vm->in;

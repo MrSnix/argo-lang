@@ -8,8 +8,7 @@
 #include "../types/isa/opcode.h"
 #include "../types/isa/operation.h"
 
-vm__op_t *vm__op_create(vm__code_t id, char *name, uint32_t ip,
-                        uint8_t args_size) {
+vm__op_t *vm__op_create(vm__code_t id, char *name, uint32_t ip, uint8_t args_size) {
   vm__op_t *op = malloc(sizeof(vm__op_t));
 
   op->id = id;
@@ -39,9 +38,7 @@ void vm__op_args_free(vm__op_args_t **args) {
   *args = NULL;
 }
 
-void vm__dec_hlt(vm_t *vm) {
-  vm->op = vm__op_create(HLT, "HLT", vm__current_ip(vm), HLT_ARGS);
-}
+void vm__dec_hlt(vm_t *vm) { vm->op = vm__op_create(HLT, "HLT", vm__current_ip(vm), HLT_ARGS); }
 
 void vm__dec_ret(vm_t *vm) {
   vm__op_t *op = vm__op_create(RET, "RET", vm__current_ip(vm), RET_ARGS);
@@ -224,9 +221,7 @@ void vm__dec_jle(vm_t *vm) {
   vm->op = op;
 }
 
-void vm__dec_nop(vm_t *vm) {
-  vm->op = vm__op_create(NOP, "NOP", vm__current_ip(vm), NOP_ARGS);
-}
+void vm__dec_nop(vm_t *vm) { vm->op = vm__op_create(NOP, "NOP", vm__current_ip(vm), NOP_ARGS); }
 
 void vm__dec_cmp(vm_t *vm) {
   vm__op_t *op = vm__op_create(CMP, "CMP", vm__current_ip(vm), CMP_ARGS);

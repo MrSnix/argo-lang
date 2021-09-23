@@ -24,12 +24,9 @@ void vm__snaps_callstack(vm_t *vm) {
   printf("| %-14s %-12s %-10s |\n", "TYPE", "NAME", "VALUE");
   printf("+----------------------------------------+\n");
   printf("| %-14s %-12s %-10d |\n", "(uint16_t)", "id", vm->bc->main->id);
-  printf("| %-14s %-12s %-10s |\n", "(const char*)", "name",
-         vm->bc->main->name);
-  printf("| %-14s %-12s %-10d |\n", "(uint32_t*)", "instr_ptr",
-         vm->bc->main->ip);
-  printf("| %-14s %-12s %-10d |\n", "(uint16_t)", "caller",
-         vm->bc->main->caller);
+  printf("| %-14s %-12s %-10s |\n", "(const char*)", "name", vm->bc->main->name);
+  printf("| %-14s %-12s %-10d |\n", "(uint32_t*)", "instr_ptr", vm->bc->main->ip);
+  printf("| %-14s %-12s %-10d |\n", "(uint16_t)", "caller", vm->bc->main->caller);
   printf("+----------------------------------------+\n");
 }
 
@@ -44,8 +41,7 @@ void vm__snaps_operation(vm_t *vm) {
     printf("| %-14s %-12s %-10d |\n", "(int32_t)", "identifier", vm->op->id);
     printf("| %-14s %-12s %-10s |\n", "(char*)", "name", vm->op->name);
     printf("| %-14s %-12s %-10d |\n", "(int32_t)", "address", vm->op->addr);
-    printf("| %-14s %-12s %-10d |\n", "(uint8_t)", "args_size",
-           vm->op->args_size);
+    printf("| %-14s %-12s %-10d |\n", "(uint8_t)", "args_size", vm->op->args_size);
 
     for (int i = 0; i < vm->op->args_size; ++i) {
       printf("+----------------------------------------+\n");
@@ -53,12 +49,9 @@ void vm__snaps_operation(vm_t *vm) {
       printf("+----------------------------------------+\n");
       printf("| %-14s %-12s %-10s |\n", "TYPE", "NAME", "VALUE");
       printf("+----------------------------------------+\n");
-      printf("| %-14s %-12s %-10s |\n", "(char*)", "name",
-             vm->op->args[i].name);
-      printf("| %-14s %-12s %-10d |\n", "(int32_t)", "value",
-             vm->op->args[i].value);
-      printf("| %-14s %-12s %-10d |\n", "(int32_t)", "addr",
-             vm->op->args[i].addr);
+      printf("| %-14s %-12s %-10s |\n", "(char*)", "name", vm->op->args[i].name);
+      printf("| %-14s %-12s %-10d |\n", "(int32_t)", "value", vm->op->args[i].value);
+      printf("| %-14s %-12s %-10d |\n", "(int32_t)", "addr", vm->op->args[i].addr);
     }
   } else {
     printf("| [UNFETCHED]%*s|\n", 28, "");
@@ -75,8 +68,7 @@ void vm__snaps_memory(vm_t *vm) {
   printf("+----------------------------------------+\n");
   printf("| %-14s %-12s %-10d |\n", "(uint32_t)", "growth", vm->stack->growth);
   printf("| %-14s %-12s %-10d |\n", "(int32_t)", "offset", vm->stack->offset);
-  printf("| %-14s %-12s %-10d |\n", "(uint32_t)", "counter",
-         vm->stack->counter);
+  printf("| %-14s %-12s %-10d |\n", "(uint32_t)", "counter", vm->stack->counter);
   printf("| %-14s %-12s %-10d |\n", "(uint32_t)", "size", vm->stack->size);
   printf("| %-14s %-12s %-10d |\n", "(uint32_t)", "max", vm->stack->max);
   printf("+----------------------------------------+\n");
@@ -88,8 +80,7 @@ void vm__snaps_memory(vm_t *vm) {
     printf("+----------------------------------------+\n");
 
     for (uint32_t i = 0; i < vm->stack->counter; ++i) {
-      printf("| %-14s %-12d %-10d |\n", "(int32_t)", i,
-             vm__stack_peek(vm->stack, i));
+      printf("| %-14s %-12d %-10d |\n", "(int32_t)", i, vm__stack_peek(vm->stack, i));
     }
   } else {
     printf("| [EMPTY]%*s|\n", 32, "");

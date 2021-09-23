@@ -22,9 +22,7 @@ vm__bc_routine_t *vm__routine_read(FILE *ptr) {
   return vm__routine_create(id, name_size, name, data_size, data);
 }
 
-void vm__bc_read_table_size(FILE *ptr, uint16_t *version) {
-  fread(version, sizeof(uint16_t), 1, ptr);
-}
+void vm__bc_read_table_size(FILE *ptr, uint16_t *version) { fread(version, sizeof(uint16_t), 1, ptr); }
 
 void vm__bc_read_version(FILE *ptr, vm__bc_version_t *version) {
   // Read major version
@@ -64,10 +62,8 @@ vm__bc_t *vm__bc_read(const char *in) {
   return bc;
 }
 
-vm__bc_t *vm__bc_create(vm__bc_version_t version, uint16_t routines_size,
-                        vm__bc_routine_t *routines[]) {
-  vm__bc_t *ptr =
-      malloc(sizeof(vm__bc_t) + sizeof(vm__bc_routine_t *[routines_size]));
+vm__bc_t *vm__bc_create(vm__bc_version_t version, uint16_t routines_size, vm__bc_routine_t *routines[]) {
+  vm__bc_t *ptr = malloc(sizeof(vm__bc_t) + sizeof(vm__bc_routine_t *[routines_size]));
   ptr->version = version;
   ptr->routines_size = routines_size;
   memcpy(ptr->routines, routines, sizeof(vm__bc_routine_t *) * routines_size);
@@ -75,8 +71,7 @@ vm__bc_t *vm__bc_create(vm__bc_version_t version, uint16_t routines_size,
   return ptr;
 }
 
-vm__bc_routine_t *vm__routine_create(uint16_t id, uint8_t name_size, char *name,
-                                     uint32_t data_size, int32_t *data) {
+vm__bc_routine_t *vm__routine_create(uint16_t id, uint8_t name_size, char *name, uint32_t data_size, int32_t *data) {
   vm__bc_routine_t *ptr = malloc(sizeof(vm__bc_routine_t));
   ptr->id = id;
   ptr->ip = 0;
