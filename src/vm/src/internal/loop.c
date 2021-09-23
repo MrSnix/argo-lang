@@ -79,11 +79,12 @@ void vm__decode(vm_t *vm, int32_t instr) {
 }
 
 void vm__execute(vm_t *vm) {
-  bool increase_ip = true;
+  // Flag to incrase the ip
+  vm__set_increase_ip(vm, true);
 
   switch (vm->op->id) {
     case HLT:
-      increase_ip = vm__exc_hlt(vm);
+      vm__exc_hlt(vm);
       break;
     case PSH:
       vm__exc_psh(vm);
@@ -110,25 +111,25 @@ void vm__execute(vm_t *vm) {
       vm__exc_swp(vm);
       break;
     case JMP:
-      increase_ip = vm__exc_jmp(vm);
+      vm__exc_jmp(vm);
       break;
     case JEQ:
-      increase_ip = vm__exc_jeq(vm);
+      vm__exc_jeq(vm);
       break;
     case JNE:
-      increase_ip = vm__exc_jne(vm);
+      vm__exc_jne(vm);
       break;
     case JMG:
-      increase_ip = vm__exc_jmg(vm);
+      vm__exc_jmg(vm);
       break;
     case JML:
-      increase_ip = vm__exc_jml(vm);
+      vm__exc_jml(vm);
       break;
     case JGE:
-      increase_ip = vm__exc_jge(vm);
+      vm__exc_jge(vm);
       break;
     case JLE:
-      increase_ip = vm__exc_jle(vm);
+      vm__exc_jle(vm);
       break;
     case CMP:
       vm__exc_cmp(vm);
@@ -136,10 +137,10 @@ void vm__execute(vm_t *vm) {
     case NOP:
       break;
     case CLL:
-      increase_ip = vm__exc_cll(vm);
+      vm__exc_cll(vm);
       break;
     case RET:
-      increase_ip = vm__exc_ret(vm);
+      vm__exc_ret(vm);
       break;
     case PRINT:
       vm__exc_print(vm);
@@ -150,19 +151,25 @@ void vm__execute(vm_t *vm) {
   }
 
   // Increment instruction for next iteration
-  if (increase_ip) vm__increase_ip(vm);
+  vm__safe_increase_ip(vm);
 }
 
-void vm__increase_ip(vm_t *vm) { vm->bc->main->ip += 1; }
-void vm__decrease_ip(vm_t *vm) { vm->bc->main->ip -= 1; }
-void vm__set_ip(vm_t *vm, int32_t addr) { vm->bc->main->ip = addr; }
-int32_t vm__current_ip(vm_t *vm) { return vm->bc->main->ip; }
+void vm__safe_increase_ip(vm_t *vm) {
+  if (vm->fetch_next) vm->bc->main->ip += 1;
+}
+void vm__set_running(vm_t *vm, bool running) { vm->running = running; }
+void vm__set_increase_ip(vm_t *vm, bool fetch_next) {
+  vm->fetch_next = fetch_next;
+}
 
+void vm__set_ip(vm_t *vm, int32_t addr) { vm->bc->main->ip = addr; }
+
+int32_t vm__current_ip(vm_t *vm) { return vm->bc->main->ip; }
 int32_t vm__fetch(vm_t *vm) { return vm->bc->main->data[vm->bc->main->ip]; }
 int32_t vm__fetch_peek(vm_t *vm, int32_t offset) {
   return vm->bc->main->data[vm->bc->main->ip + offset];
 }
 int32_t vm__fetch_next(vm_t *vm) {
-  vm__increase_ip(vm);
+  vm__safe_increase_ip(vm);
   return vm->bc->main->data[vm->bc->main->ip];
 }

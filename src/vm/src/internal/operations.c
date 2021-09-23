@@ -6,16 +6,16 @@
 #include "../core/runtime.h"
 #include "../core/stack.h"
 
-bool vm__exc_hlt(vm_t *vm) {
-  vm->running = false;
-  return false;
+void vm__exc_hlt(vm_t *vm) {
+  vm__set_running(vm, false);
+  vm__set_increase_ip(vm, false);
 }
 
-bool vm__exc_ret(vm_t *vm) {
+void vm__exc_ret(vm_t *vm) {
   // Switch to new call frame
   vm->bc->main = vm->bc->routines[vm->bc->main->caller];
   // Do not increment, routine has been finished
-  return false;
+  vm__set_increase_ip(vm, false);
 }
 
 void vm__exc_psh(vm_t *vm) {
@@ -68,70 +68,70 @@ void vm__exc_swp(vm_t *vm) {
   vm__stack_push(vm->stack, vm->op->args[1].value);
 }
 
-bool vm__exc_jmp(vm_t *vm) {
+void vm__exc_jmp(vm_t *vm) {
   vm__set_ip(vm, vm->op->args[0].value);
   // When we jump, we don't increase
-  return false;
+  vm__set_increase_ip(vm, false);
 }
 
-bool vm__exc_jeq(vm_t *vm) {
+void vm__exc_jeq(vm_t *vm) {
   bool cmp = vm->cmp == EQUALS;
 
   if (cmp) {
     vm__set_ip(vm, vm->op->args[0].value);
   }
 
-  return !cmp;
+  vm__set_increase_ip(vm, !cmp);
 }
 
-bool vm__exc_jne(vm_t *vm) {
+void vm__exc_jne(vm_t *vm) {
   bool cmp = vm->cmp != EQUALS;
 
   if (cmp) {
     vm__set_ip(vm, vm->op->args[0].value);
   }
 
-  return !cmp;
+  vm__set_increase_ip(vm, !cmp);
 }
 
-bool vm__exc_jmg(vm_t *vm) {
+void vm__exc_jmg(vm_t *vm) {
   bool cmp = vm->cmp == GREATER;
 
   if (cmp) {
     vm__set_ip(vm, vm->op->args[0].value);
   }
 
-  return !cmp;
+  vm__set_increase_ip(vm, !cmp);
 }
 
-bool vm__exc_jml(vm_t *vm) {
+void vm__exc_jml(vm_t *vm) {
   bool cmp = vm->cmp == LESSER;
 
   if (cmp) {
     vm__set_ip(vm, vm->op->args[0].value);
   }
 
-  return !cmp;
+  vm__set_increase_ip(vm, !cmp);
 }
 
-bool vm__exc_jge(vm_t *vm) {
+void vm__exc_jge(vm_t *vm) {
   bool cmp = vm->cmp == GREATER || vm->cmp == EQUALS;
 
   if (cmp) {
     vm__set_ip(vm, vm->op->args[0].value);
   }
 
-  return !cmp;
+  vm__set_increase_ip(vm, !cmp);
 }
 
-bool vm__exc_jle(vm_t *vm) {
+void vm__exc_jle(vm_t *vm) {
   bool cmp = vm->cmp == LESSER || vm->cmp == EQUALS;
 
   if (cmp) {
     vm__set_ip(vm, vm->op->args[0].value);
   }
 
-  return !cmp;
+  vm__set_increase_ip(vm, !cmp);
 }
 
 void vm__exc_cmp(vm_t *vm) {
@@ -144,7 +144,7 @@ void vm__exc_cmp(vm_t *vm) {
   }
 }
 
-bool vm__exc_cll(vm_t *vm) {
+void vm__exc_cll(vm_t *vm) {
   // Save current return address
   uint16_t return_address = vm->bc->main->id;
   // Increase current ip now
@@ -155,7 +155,7 @@ bool vm__exc_cll(vm_t *vm) {
   vm->bc->main->caller = return_address;
   // Do not increase ip now, we just switched
   // we have to execute the zero instruction
-  return false;
+  vm__set_increase_ip(vm, false);
 }
 
 void vm__exc_print(vm_t *vm) { printf("%d\n", vm->op->args[0].value); }

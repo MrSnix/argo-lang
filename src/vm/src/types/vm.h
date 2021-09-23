@@ -14,6 +14,8 @@ typedef enum { LESSER = -1, EQUALS = 0, GREATER = 1 } Comparator;
 typedef struct {
   // Is VM running?
   bool running;
+  // If the instruction pointer should be increased
+  bool fetch_next;
   // Program instructions
   vm__bc_t *bc;
   // Comparator
