@@ -22,6 +22,7 @@ vm__stack_t *vm__stack_create(int32_t current_size, int32_t max_size) {
 
   stack->counter = 0;
   stack->offset = -1;
+  stack->growth = 0;
 
   vm__stack_create_data(stack);
 
@@ -36,8 +37,38 @@ void vm__stack_free(vm__stack_t **stack) {
   *stack = NULL;
 }
 
+static uint32_t fib(uint32_t nth) {
+
+    if (nth == 0) {
+        return 0;
+    } else if (nth == 1) {
+        return 1;
+    }
+    
+    uint32_t i = 0,
+    fibNum = 1,
+    nMinus1 = 1, 
+    nMinus2 = 0;
+    
+    while (i < nth - 2) {
+        nMinus2 = nMinus1;
+        nMinus1 = (fibNum == 0) ? 1 : fibNum;
+        fibNum = nMinus1 + nMinus2;
+        
+        i++;
+    }
+    
+    return fibNum;
+}
+
 void vm__stack_grow(vm__stack_t *stack) {
-  stack->size += 8;
+  // Increase growth depth
+  stack->growth += 1;
+  // Get increase size
+  uint32_t size = fib(stack->growth);
+  // Get current size
+  stack->size += size;
+  // Increase stack size
   int32_t *tmp = malloc(sizeof(int32_t *) * stack->size);
 
   for (uint32_t i = 0; i < stack->size - 8; i++) {

@@ -73,6 +73,7 @@ void vm__snaps_memory(vm_t *vm) {
   printf("+========================================+\n");
   printf("| %-14s %-12s %-10s |\n", "TYPE", "NAME", "VALUE");
   printf("+----------------------------------------+\n");
+  printf("| %-14s %-12s %-10d |\n", "(uint32_t)", "growth", vm->stack->growth);
   printf("| %-14s %-12s %-10d |\n", "(int32_t)", "offset", vm->stack->offset);
   printf("| %-14s %-12s %-10d |\n", "(uint32_t)", "counter",
          vm->stack->counter);
