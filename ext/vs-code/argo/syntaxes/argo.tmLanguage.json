@@ -1,0 +1,93 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Argo",
+	"patterns": [
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#routine-stmt"
+		},
+		{
+			"include": "#flow-kwd"
+		},
+		{
+			"include": "#routine-kwd"
+		},
+		{
+			"include": "#data-types"
+		}
+	],
+	"repository": {
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.line.argo",
+					"begin": "#",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.comment.argo"
+						}
+					},
+					"end": "\\n",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.comment.argo"
+						}
+					}
+				}
+			]
+		},
+		"flow-kwd": {
+			"patterns": [
+				{
+					"name": "keyword.control.argo",
+					"match": "\\b(JEQ|JNE|JML|JMG|JGE|JLE|JMP|HLT)\\b"
+				}
+			]
+		},
+		"routine-kwd": {
+			"patterns": [
+				{
+					"name": "keyword.operator.argo",
+					"match": "\\b(CLL|RET)\\b"
+				}
+			]
+		},
+		"routine-stmt": {
+			"patterns": [
+				{
+					"name": "entity.name.function.argo",
+					"begin": "(?<=:)",
+					"end": "(?=\\s{)"
+				}
+			]
+		},
+		"data-types": {
+			"patterns": [
+				{
+					"include": "#strings"
+				},
+				{
+					"include": "#numbers"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.argo",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.argo",
+					"match": "\\\\."
+				}
+			]
+		},
+		"numbers": {
+			"name": "keyword.other.unit.argo",
+			"match": "[0-9]+"
+		}
+	},
+	"scopeName": "source.argo"
+}
