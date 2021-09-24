@@ -1,1 +1,0 @@
-perl tools/deps/cinclude2dot --src ../argo-vm/src/ > tools/out/deps-mapping.dot
