@@ -68,18 +68,18 @@ void vm__snaps_memory(vm_t *vm) {
   printf("+----------------------------------------+\n");
   printf("| %-14s %-12s %-10d |\n", "(uint32_t)", "growth", vm->stack->growth);
   printf("| %-14s %-12s %-10d |\n", "(int32_t)", "offset", vm->stack->offset);
-  printf("| %-14s %-12s %-10d |\n", "(uint32_t)", "counter", vm->stack->counter);
+  printf("| %-14s %-12s %-10d |\n", "(uint32_t)", "count", vm->stack->count);
   printf("| %-14s %-12s %-10d |\n", "(uint32_t)", "size", vm->stack->size);
   printf("| %-14s %-12s %-10d |\n", "(uint32_t)", "max", vm->stack->max);
   printf("+----------------------------------------+\n");
   printf("| <DATA>%*s|\n", 33, "");
   printf("+----------------------------------------+\n");
 
-  if (vm->stack->counter) {
+  if (vm->stack->count) {
     printf("| %-14s %-12s %-10s |\n", "TYPE", "ADDR", "VALUE");
     printf("+----------------------------------------+\n");
 
-    for (uint32_t i = 0; i < vm->stack->counter; ++i) {
+    for (uint32_t i = 0; i < vm->stack->count; ++i) {
       printf("| %-14s %-12d %-10d |\n", "(int32_t)", i, vm__stack_peek(vm->stack, i));
     }
   } else {
