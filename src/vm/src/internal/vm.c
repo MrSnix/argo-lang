@@ -14,7 +14,7 @@
 static vm_t *vm__init(vm__bc_t *bc) {
   vm_t *vm = malloc(sizeof(vm_t));
 
-  vm->running = false;
+  vm->run = false;
   vm->bc = bc;
   vm->bc->main->ip = 0;
   vm->cmp = EQUALS;
@@ -33,9 +33,9 @@ vm_t *vm__create(vm__bc_t *bc, vm__opts_t *opts) {
 
 void vm__run(vm_t *vm) {
   // Init
-  vm->running = true;
+  vm->run = true;
   // Execute cycle
-  while (vm->running) {
+  while (vm->run) {
     // Read
     int32_t instruction = vm__fetch(vm);
     // Decode

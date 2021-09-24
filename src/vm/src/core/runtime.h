@@ -12,7 +12,7 @@ void vm__execute(vm_t *vm);
 void vm__safe_increase_ip(vm_t *vm);
 void vm__set_ip(vm_t *vm, int32_t addr);
 void vm__decode(vm_t *vm, int32_t instr);
-void vm__set_running(vm_t *vm, bool running);
-void vm__set_increase_ip(vm_t *vm, bool fetch_next);
+void vm__set_running(vm_t *vm, bool run);
+void vm__set_increase_ip(vm_t *vm, bool fetch);
 
 #endif

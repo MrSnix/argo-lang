@@ -9,17 +9,17 @@
 #include "options.h"
 #include "stack.h"
 
-typedef enum { LESSER = -1, EQUALS = 0, GREATER = 1 } Comparator;
+typedef enum { LESSER = -1, EQUALS = 0, GREATER = 1 } vm__cmp_t;
 
 typedef struct {
   // Is VM running?
-  bool running;
+  bool run;
   // If the instruction pointer should be increased
-  bool fetch_next;
+  bool fetch;
   // Program instructions
   vm__bc_t *bc;
-  // Comparator
-  Comparator cmp;
+  // vm__cmp_t
+  vm__cmp_t cmp;
   // Stack
   vm__stack_t *stack;
   // Current operation
