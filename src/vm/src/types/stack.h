@@ -9,7 +9,7 @@
 typedef struct {
   int32_t *data;
   int32_t offset;
-  uint32_t counter;
+  uint32_t count;
   uint32_t growth;
   uint32_t size;
   uint32_t max;

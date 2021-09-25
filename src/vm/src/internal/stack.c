@@ -20,7 +20,7 @@ vm__stack_t *vm__stack_create(int32_t current_size, int32_t max_size) {
   stack->size = current_size;
   stack->max = max_size;
 
-  stack->counter = 0;
+  stack->count = 0;
   stack->offset = -1;
   stack->growth = 0;
 
@@ -78,10 +78,10 @@ void vm__stack_grow(vm__stack_t *stack) {
 void vm__stack_push(vm__stack_t *stack, int32_t value) {
   assert(stack->size < stack->max);
 
-  if (stack->counter < stack->size) {
+  if (stack->count < stack->size) {
     stack->offset++;
     stack->data[stack->offset] = value;
-    stack->counter++;
+    stack->count++;
   } else {
     vm__stack_grow(stack);
     vm__stack_push(stack, value);
@@ -96,13 +96,13 @@ int32_t vm__stack_pop(vm__stack_t *stack) {
   stack->data[stack->offset] = 0;
 
   stack->offset--;
-  stack->counter--;
+  stack->count--;
 
   return top;
 }
 
-int32_t vm__stack_size(vm__stack_t *stack) { return stack->counter; }
-int32_t vm__stack_empty(vm__stack_t *stack) { return stack->counter == 0; }
+int32_t vm__stack_size(vm__stack_t *stack) { return stack->count; }
+int32_t vm__stack_empty(vm__stack_t *stack) { return stack->count == 0; }
 int32_t vm__stack_offset(vm__stack_t *stack) { return stack->offset; }
 int32_t vm__stack_top(vm__stack_t *stack) { return stack->data[stack->offset]; }
 int32_t vm__stack_peek(vm__stack_t *stack, int32_t offset) { return stack->data[offset]; }
