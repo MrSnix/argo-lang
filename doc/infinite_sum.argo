@@ -10,6 +10,7 @@
   PSH, 1
   PSH, 1 
   ADD
+  PRINT
   JMP, 2
   HLT
 }
