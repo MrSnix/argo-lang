@@ -7,3 +7,5 @@
 
 *.argoc
 .DS_Store
+.idea
+/src/vm/cmake-build-debug
